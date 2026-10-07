@@ -18,7 +18,6 @@ the flagged subset. Deferred analysis is listed explicitly at the end.
 - A measured report: revenue dollar error and reviewer behavior vs truth.
 
 **Deferred to the next pass (writeup, mostly not code):**
-- Mislabel-rate sensitivity sweep (2 % / 5 % / 10 %).
 - The two short-answer questions (zero-NSF bank; 61-day vs 90-day history).
 - False-revenue vs false-active-advance cost analysis.
 - Production one-pager (shadow rollout, input drift, reproducibility, humans).
@@ -104,6 +103,65 @@ are revenue — brought it to $12,386. Luna's remaining weakness was over-flaggi
 
 (GPT-6 Luna at temperature 0 is only best-effort deterministic, so separate live
 runs vary slightly; the committed cache is the fixed, reproducible result.)
+
+## Credit impact — how much mislabels move the offer (Part 2)
+
+`src/sensitivity.py` takes the correct labels, makes a share of them wrong, and
+measures how far each business's offer moves. The same number of mistakes is
+placed two ways: *uniform* (any transaction, chosen at random) and
+*offer-relevant* (only the labels that feed the offer — revenue deposits and
+payments to other funders). Results are averaged over 25 runs.
+
+| placement | mislabel rate | transactions wrong | avg. change in monthly revenue (per business) | avg. change in offer (per business) | businesses crossing the NSF>5 cut-off |
+|---|---|---|---|---|---|
+| uniform | 2% | 37 | $516 | $1,534 | 0.4 |
+| uniform | 5% | 93 | $1,381 | $4,373 | 1.1 |
+| uniform | 10% | 186 | $2,896 | $7,524 | 1.9 |
+| offer-relevant | 2% | 37 | $1,190 | $1,126 | 0.2 |
+| offer-relevant | 5% | 93 | $3,220 | $5,166 | 1.1 |
+| offer-relevant | 10% | 186 | $6,138 | $9,551 | 2.2 |
+
+Two findings. First, monthly revenue is about twice as sensitive to mistakes on
+revenue and other-funder labels as to random mistakes, at every rate. Second,
+the offer moves sharply under random mistakes as well — at 2% it moves even more
+than under the offer-relevant placement. The reason is the rule that sets the
+offer to zero once the NSF count passes five: a random mistake can relabel a
+transaction as an NSF and cross that cut-off, and this single step overrides the
+revenue effect.
+
+The conclusion: a headline mislabel rate on its own tells nothing about risk.
+What matters is whether the mistakes land on the labels that drive the offer —
+the NSF count and its cut-off first, then the revenue total and payments to other
+funders. Monitoring those specific labels is reliable; tracking an overall error
+rate is not.
+
+## Credit impact — false revenue vs. false active-advance labels (Part 2)
+
+Both labels feed the offer, but through different terms, so they cost different
+amounts and move risk in different directions.
+
+**Direction.** A revenue label set too high raises average monthly revenue and
+overstates the offer; set too low, it understates the offer. An active-advance
+label set too high (more payments to other funders than real) understates the
+offer; missed or set too low, it overstates the offer.
+
+**Why the amounts differ.** Revenue enters the offer as `1.2 × (revenue ÷ 3
+months)`, so each mislabelled revenue dollar moves the offer by `$0.40`. Payments
+to other funders enter as `20 × (payments ÷ 90 days)`, so each mislabelled
+active-advance dollar moves the offer by `$0.22`. A revenue dollar is therefore
+about 1.8 times as costly as an active-advance dollar. Revenue deposits are also
+larger and far more common. In this data the average revenue deposit is $1,109
+and the average active-advance payment is $245, so one false revenue label moves
+the offer by about **$444**, against about **$54** for one false active-advance
+label — roughly eight times as much.
+
+**Which way the risk runs.** The dangerous direction is overstating the offer,
+which leads to lending more than the business can support and lending on top of
+existing advances. The offer is overstated in two cases: revenue labelled too
+high, and active advance missed or labelled too low. Both make the business look
+healthier or less indebted than it is. Understating the offer only costs a lost
+deal. The review stage should therefore guard hardest against false revenue and
+missed active advance.
 
 ## Determinism
 
