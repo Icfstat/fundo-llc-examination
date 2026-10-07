@@ -1,4 +1,4 @@
-# Fundo AI Engineer Challenge: v2
+# Fundo Senior AI Engineer examination: v2
 
 A two-stage LLM **reviewer** of an imperfect keyword transaction-labeling engine.
 GPT-6 Luna triages every transaction and flags the doubtful ones; GPT-5.6 Terra
