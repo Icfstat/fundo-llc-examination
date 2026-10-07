@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.98,
-  "group": "Not average monthly revenue",
-  "reason": "A print shop payment is a refund or other one-off credit, not recurring sales revenue.",
-  "verdict": "doubt"
-}

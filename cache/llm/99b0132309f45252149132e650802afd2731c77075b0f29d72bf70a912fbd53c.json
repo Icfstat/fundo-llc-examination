@@ -1,7 +1,0 @@
-{
-  "business_personal": "personal",
-  "confidence": 0.91,
-  "group": null,
-  "reason": "Zelle payment to an individual is a personal outflow; no specified risk group applies.",
-  "verdict": "agree"
-}

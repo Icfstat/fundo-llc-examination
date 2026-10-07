@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.99,
-  "group": null,
-  "reason": "Square payment-processor credit is ordinary business sales revenue, not an excluded deposit.",
-  "verdict": "agree"
-}

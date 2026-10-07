@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.98,
-  "group": "Not average monthly revenue",
-  "reason": "A Shopify payment is ordinarily a sales payout, but this is an outgoing payment, not business revenue.",
-  "verdict": "doubt"
-}

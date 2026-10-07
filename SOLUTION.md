@@ -67,10 +67,10 @@ Summed absolute error in average monthly revenue across the 10 businesses:
 | | revenue error vs truth |
 |---|---|
 | legacy (keyword engine) | **$43,395** |
-| after reviewer corrections | **$10,183** |
+| after reviewer corrections | **$12,386** |
 
-The reviewer cuts revenue error by ~76%. Of 190 transactions it flagged: **152
-good catches** (fixed a real error), **38 bad flags** (doubted an already-correct
+The reviewer cuts revenue error by ~71%. Of 196 transactions it flagged: **152
+good catches** (fixed a real error), **44 bad flags** (doubted an already-correct
 label), **0 missed** engine errors. It also fixes offers: the engine's NSF
 undercount (missed NSF variants) wrongly offered biz_04/biz_08 ~$33–40k when the
 truth is $0; after review both correctly return to $0.
@@ -81,7 +81,9 @@ group *names* with no definitions. GPT-6 Luna invented semantics and reclassifie
 *tripling* the error to $128k. Adding a one-line glossary per group — and stating
 explicitly that processor payouts are revenue — fixed it.
 
-Residual $10,183 / 38 bad flags are left for the next pass.
+Residual $12,386 / 44 bad flags are left for the next pass. (GPT-6 Luna at
+temperature 0 is only best-effort deterministic, so separate live runs vary
+slightly; the committed cache is the fixed, reproducible result.)
 
 ## Determinism
 
@@ -94,8 +96,8 @@ the actual guarantee.)
 
 GPT-6 Luna at $0.10 / $0.50 per M tokens, 1,745 cached calls (after prompt-level
 deduplication). One full pass costs **~$0.07** (measured); reproducing from the
-committed cache costs **$0**. Development used two passes (one prompt fix), so
-**total actual spend ≈ $0.14** — far under the $10 cap.
+committed cache costs **$0**. Development used a few passes (prompt fix + cache
+format), so **total actual spend ≈ $0.2** — far under the $10 cap.
 
 ## Tools used
 

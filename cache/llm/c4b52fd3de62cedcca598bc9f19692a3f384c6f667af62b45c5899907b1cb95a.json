@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.94,
-  "group": null,
-  "reason": "Stripe payout to Yoga Loft is a payment-processor sales credit, not an internal transfer.",
-  "verdict": "doubt"
-}

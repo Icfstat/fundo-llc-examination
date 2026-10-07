@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.99,
-  "group": null,
-  "reason": "Square deposit is a payment-processor sales payout, treated as business revenue with no group.",
-  "verdict": "agree"
-}

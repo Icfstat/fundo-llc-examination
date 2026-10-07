@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.91,
-  "group": null,
-  "reason": "Shopify payment is a business sales payout; ordinary processor revenue has no group.",
-  "verdict": "agree"
-}

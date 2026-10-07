@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.98,
-  "group": null,
-  "reason": "Square deposit is a payment-processor payout, treated as ordinary business revenue.",
-  "verdict": "agree"
-}

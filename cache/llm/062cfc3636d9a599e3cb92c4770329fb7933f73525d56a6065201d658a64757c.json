@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.98,
-  "group": null,
-  "reason": "Shopify payment is a payment-processor sales credit; ordinary business revenue has no group.",
-  "verdict": "agree"
-}

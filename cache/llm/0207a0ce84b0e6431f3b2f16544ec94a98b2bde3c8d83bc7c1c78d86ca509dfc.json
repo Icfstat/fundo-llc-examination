@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.99,
-  "group": null,
-  "reason": "Clover deposit is a payment-processor sales payout, treated as ordinary business revenue.",
-  "verdict": "agree"
-}

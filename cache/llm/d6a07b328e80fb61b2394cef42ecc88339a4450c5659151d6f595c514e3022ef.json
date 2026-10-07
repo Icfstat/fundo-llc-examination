@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.99,
-  "group": "Not average monthly revenue",
-  "reason": "A large one-off credit from a grocer is not a payment-processor sales payout or recurring business revenue.",
-  "verdict": "doubt"
-}

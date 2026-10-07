@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.99,
-  "group": "Not average monthly revenue",
-  "reason": "SQ indicates a Square payment, but this is a debit/outflow, not a business sales credit.",
-  "verdict": "doubt"
-}

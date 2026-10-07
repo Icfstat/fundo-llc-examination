@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.98,
-  "group": null,
-  "reason": "Square deposit is a payment-processor sales credit and should remain ungrouped business revenue.",
-  "verdict": "agree"
-}

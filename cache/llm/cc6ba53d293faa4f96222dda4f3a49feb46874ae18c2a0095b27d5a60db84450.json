@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.99,
-  "group": "Overdraft",
-  "reason": "The description identifies an overdraft fee.",
-  "verdict": "doubt"
-}

@@ -167,11 +167,11 @@ def review_all(txns: list, client=None, max_workers: int = MAX_WORKERS) -> list:
     """
     prepared = [(t, cache.key(MODEL, build_prompt(t))) for t in txns]
 
+    store = cache.load()
     raw_by_key, missing = {}, {}
     for t, k in prepared:
-        cached = cache.get(k)
-        if cached is not None:
-            raw_by_key[k] = cached
+        if k in store:
+            raw_by_key[k] = store[k]
         else:
             missing[k] = build_prompt(t)
 
@@ -179,15 +179,15 @@ def review_all(txns: list, client=None, max_workers: int = MAX_WORKERS) -> list:
         if client is None:
             raise RuntimeError(
                 "Cache miss and no API client. Set OPENAI_API_KEY and run once to "
-                "populate the cache, then commit cache/llm/. "
+                "populate the cache, then commit cache/llm.json. "
                 f"{len(missing)} prompt(s) uncached, e.g. {next(iter(missing))}"
             )
         with ThreadPoolExecutor(max_workers=max_workers) as pool:
             futures = {pool.submit(_call_model, client, p): k for k, p in missing.items()}
             for fut in as_completed(futures):
-                k = futures[fut]
-                raw_by_key[k] = fut.result()
-                cache.put(k, raw_by_key[k])
+                raw_by_key[futures[fut]] = fut.result()  # main thread -> no lock needed
+        store.update({k: raw_by_key[k] for k in missing})
+        cache.save(store)
 
     out = []
     for t, k in prepared:

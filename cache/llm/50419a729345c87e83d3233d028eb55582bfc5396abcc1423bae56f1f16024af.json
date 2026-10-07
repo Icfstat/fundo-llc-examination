@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.98,
-  "group": null,
-  "reason": "Shopify payment is a business payment-processor payout, treated as sales revenue.",
-  "verdict": "agree"
-}

@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.84,
-  "group": null,
-  "reason": "SQ indicates a Square payment-processor credit; ordinary sales payouts are business revenue.",
-  "verdict": "agree"
-}

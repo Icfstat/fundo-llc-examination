@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.99,
-  "group": "Internal transfer",
-  "reason": "Transfer to savings indicates movement between the business's own accounts.",
-  "verdict": "agree"
-}

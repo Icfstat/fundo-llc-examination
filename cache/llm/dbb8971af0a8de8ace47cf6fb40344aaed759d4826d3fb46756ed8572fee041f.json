@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.99,
-  "group": null,
-  "reason": "Clover credit is a payment-processor payout, treated as ordinary business sales revenue.",
-  "verdict": "agree"
-}

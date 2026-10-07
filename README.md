@@ -35,17 +35,17 @@ export OPENAI_API_KEY=sk-...
 python src/run.py
 
 # 2) Commit the cache so the output reproduces without a key.
-git add cache/llm && git commit -m "Add LLM response cache"
+git add cache/llm.json && git commit -m "Add LLM response cache"
 ```
 
 ## Reproduce from cache (no API key)
 
 ```bash
 unset OPENAI_API_KEY
-python src/run.py        # replays cache/llm/, identical output
+python src/run.py        # replays cache/llm.json, identical output
 ```
 
-The committed data (`data/transactions.json`) and cache (`cache/llm/`) make a
+The committed data (`data/transactions.json`) and cache (`cache/llm.json`) make a
 clean checkout reproduce the report deterministically. The report is written to
 `out/report.md`.
 

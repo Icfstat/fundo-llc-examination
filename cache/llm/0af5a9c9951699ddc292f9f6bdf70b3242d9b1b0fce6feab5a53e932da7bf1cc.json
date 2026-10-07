@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.98,
-  "group": "Not average monthly revenue",
-  "reason": "Large one-off credit from a grocer is not a recurring sales payout; treat as non-operating credit.",
-  "verdict": "doubt"
-}

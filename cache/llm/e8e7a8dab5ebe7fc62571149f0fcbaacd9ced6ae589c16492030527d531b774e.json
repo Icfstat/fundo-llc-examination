@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.98,
-  "group": null,
-  "reason": "Stripe payment-processor credit for a print shop is ordinary business sales revenue, not an internal transfer.",
-  "verdict": "doubt"
-}

@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.99,
-  "group": null,
-  "reason": "Shopify payout is a business sales credit; processor payouts are revenue and carry no group.",
-  "verdict": "agree"
-}

@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.99,
-  "group": "High risk \u2014 debt settlement payments",
-  "reason": "National Debt Relief is a debt-settlement firm; this debit is a business debt-relief payment.",
-  "verdict": "agree"
-}

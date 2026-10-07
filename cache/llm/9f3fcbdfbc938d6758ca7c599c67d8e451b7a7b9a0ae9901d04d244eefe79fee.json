@@ -1,7 +1,0 @@
-{
-  "business_personal": "business",
-  "confidence": 0.98,
-  "group": "Not average monthly revenue",
-  "reason": "Large one-off credit from a salon is not recurring sales revenue; likely a refund or other non-operating credit.",
-  "verdict": "doubt"
-}
