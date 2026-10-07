@@ -2,11 +2,11 @@
 
 A two-stage LLM reviewer of an imperfect keyword labeling engine, with measured
 credit impact. v1 was a single Luna pass; v2 adds a Terra adjudication stage on
-the flagged subset. Deferred analysis is listed explicitly at the end.
+the flagged subset.
 
-## Scope, and what is deferred
+## Scope
 
-**Done (runnable):**
+**Code (runnable):**
 - Synthetic Plaid-shaped dataset with ground-truth labels (10 businesses, 90
   days, ~1,850 transactions).
 - Deliberately imperfect 13-group keyword engine with precedence and a
@@ -17,8 +17,11 @@ the flagged subset. Deferred analysis is listed explicitly at the end.
   truth / legacy / v1 / v2 labels.
 - A measured report: revenue dollar error and reviewer behavior vs truth.
 
-**Deferred to the next pass (writeup, mostly not code):**
-- Production one-pager (shadow rollout, input drift, reproducibility, humans).
+**Analysis and writeup:**
+- Credit impact (Part 2): mislabel sensitivity, false-label costs, the no-NSF-fee
+  bank, and 61-day histories.
+- Production proposal (Part 3): shadow rollout, input shift, reproducibility, and
+  underwriters in the loop.
 
 ## Data
 
@@ -208,6 +211,40 @@ Also watch the average input values for a steady fall — for example, if the
 average NSF count across new applications drops from about 4 to about 2 over a
 short period, shorter histories are a likely cause. Very short histories can be
 sent for a human review.
+
+## Production proposal (Part 3)
+
+**Shadow and the promotion gate.** The pipeline runs the keyword engine and the
+reviewer side by side and logs every case where the reviewer would change the
+engine's decision, with the dollar effect on the offer, without touching the
+live decision. Underwriters review those logs later — to improve the pipeline,
+not to approve each release. The reviewer is promoted to change live decisions
+on an objective bar: its logged changes show a stable, bounded dollar impact and
+it passes the golden test set. Production has no ground truth, so the bar uses
+impact and the golden set, not dollar error.
+
+**Catching a silent input shift after a retrain.** The risk model's inputs are
+the features the pipeline produces (monthly revenue, NSF count, high-risk share,
+funder payments). Each engine and reviewer version is pinned, and after any
+retrain the new version re-scores a fixed reference sample; if the feature
+distributions or the label mix move meaningfully against the previous version,
+that shift is logged so it is visible. A retrain is not necessarily bad — the
+point is that a change in the risk model's inputs must not go unnoticed.
+
+**Reproducing a past decline.** The pipeline is deterministic and the model
+responses are cached and versioned in git, so a decision replays exactly from
+the same inputs and code. To reproduce a specific past decline after a later
+label fix, a record is stored per decision: a snapshot of the input
+transactions, the code version, the model id, and the labels and offer produced.
+Re-running that version on that snapshot reproduces the original decline, kept
+separate from the new labels — nothing is overwritten.
+
+**Underwriters in the loop.** Underwriters review a sample of the reviewer's
+flags and mark agree or correct, with a short reason. That feedback flows back
+three ways: recurring mistakes are added to the model instructions; stable,
+clear-cut rules are enforced in code after the model; and the hardest,
+business-critical cases become a golden test set that every new version must
+pass before promotion — so a fix for one case cannot quietly break others.
 
 ## Determinism
 
