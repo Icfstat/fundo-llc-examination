@@ -23,10 +23,8 @@ the flagged subset.
 - Production proposal (Part 3): shadow rollout, input shift, reproducibility, and
   underwriters in the loop.
 
-**Left out, on purpose:** a cheaper discriminative triage model (a v3 idea) was
-explored and set aside as over-engineering for the gain. Two of the 13 groups
-(`Auto deposit`, `High risk — other`) are defined but not exercised by the
-generated data.
+**Left out, on purpose:** a cheaper discriminative jev model (a v3 idea) was
+explored and set aside because the current model was already strong at a reasonable cost. 
 
 ## Data
 
