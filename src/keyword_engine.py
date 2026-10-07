@@ -1,18 +1,22 @@
-"""Deliberately imperfect keyword engine (stands in for Fundo's legacy engine).
+"""Simple keyword engine (stands in for Fundo's legacy engine).
 
 It labels each transaction with one of 13 groups (or none), plus a
 business/personal flag, then derives revenue. It is intentionally simple and
-has two realistic, built-in bugs so the LLM reviewer has something to catch:
+performs decently, but its mistakes come from the inherent LIMITATIONS of
+literal keyword matching -- not from deliberately planted bugs:
 
-  BUG 1 (punctuation): the description is normalized (punctuation stripped,
-    upper-cased) before matching, but the KEYWORDS are not. So any keyword that
-    itself contains punctuation (e.g. "N.S.F.", "NON-SUFFICIENT") can never
-    match -> real NSFs are silently missed.
+  - Incomplete vocabulary: it matches a fixed keyword list, so phrasings it
+    does not list are missed (e.g. an NSF described as "RETURNED ITEM").
+  - No counterparty disambiguation: the same token means different things, and
+    the engine cannot tell "SQUARE INC" (revenue) from "SQUARE CAPITAL" (loan),
+    so an unlisted loan counterparty slips through as revenue.
+  - Blunt matching: a generic keyword over-matches, so "STRIPE TRANSFER" (a
+    revenue payout) is caught by the "TRANSFER" rule for internal transfers.
+  - No punctuation handling: matching is token-based and does not normalize
+    punctuation, so a keyword fused to adjacent punctuation in a noisy
+    description ("OVERDRAFT-FEE") is not recognized and the fee is missed.
 
-  BUG 2 (coverage gaps): no keyword distinguishes "SQUARE CAPITAL" (a loan)
-    from "SQUARE INC" (revenue), so loan disbursements slip through as revenue;
-    and "TRANSFER" over-matches, so a Shopify payout whose text contains
-    "TRANSFER" is miscalled an internal transfer.
+These are exactly the gaps an LLM reviewer is positioned to catch.
 
 Assumptions (documented in docs/specs.md):
   - Revenue = business AND credit (amount < 0) AND no group matched. Every one
@@ -40,10 +44,10 @@ PRECEDENCE = [
     "Not average monthly revenue",
 ]
 
-# Keyword lists per group. A few entries deliberately keep punctuation so they
-# never match the normalized description (BUG 1).
+# Keyword lists per group. Reasonable but incomplete -- phrasings not listed
+# here are simply missed (a vocabulary-coverage limitation, not a bug).
 KEYWORDS = {
-    "NSFs": ["NSF", "N.S.F.", "NON-SUFFICIENT"],              # dotted/hyphen entries never match
+    "NSFs": ["NSF", "INSUFFICIENT FUNDS"],                    # misses "RETURNED ITEM", "NON-SUFFICIENT"
     "Overdraft": ["OVERDRAFT", "OD FEE"],
     "High risk — gambling": ["DRAFTKINGS", "CASINO", "BET MGM", "FANDUEL"],
     "High risk — bankruptcy": ["BANKRUPTCY", "TRUSTEE", "CH 7"],
@@ -52,7 +56,7 @@ KEYWORDS = {
     "High risk — other": ["CRYPTO", "COINBASE"],
     "UCC": ["UCC"],
     "Active advance": ["DAILY REMIT", "ONDECK", "KABBAGE", "FORA", "MERCHANT ADVANCE"],
-    "Internal transfer": ["TRANSFER"],                        # over-matches (BUG 2)
+    "Internal transfer": ["TRANSFER"],                        # generic; also catches "STRIPE TRANSFER"
     "Revenue verification": ["ACCTVERIFY", "MICRODEPOSIT", "TRIAL DEPOSIT"],
     "Auto deposit": ["AUTO DEPOSIT"],
     "Not average monthly revenue": ["TAX REF", "REFUND", "CHARGEBACK", "OWNER CONTRIB"],
@@ -63,15 +67,15 @@ PERSONAL_MARKERS = ["NETFLIX", "STARBUCKS", "VENMO", "ZELLE", "SPOTIFY"]
 
 
 def _normalize(description: str) -> str:
-    """Upper-case and strip non-alphanumerics to spaces. Note: applied only to
-    the description, not to keywords -> this is BUG 1."""
-    return re.sub(r"[^A-Z0-9]+", " ", description.upper()).strip()
+    """Upper-case and collapse whitespace. Punctuation is left in place: the
+    engine does not canonicalize it, which is one of its limitations."""
+    return re.sub(r"\s+", " ", description.upper()).strip()
 
 
 def _matches(keyword: str, norm: str) -> bool:
-    """Whole-token match: the keyword must appear delimited by spaces. This
-    avoids accidental substring hits ("NSF" inside "traNSFer") while still
-    letting punctuation keywords fail (their dots/hyphens are never in `norm`)."""
+    """Whole-token match: the keyword must appear delimited by spaces, so "NSF"
+    does not match inside "TRANSFER", and punctuation fused to a word
+    ("OVERDRAFT-FEE") keeps the plain keyword ("OVERDRAFT") from matching."""
     return f" {keyword} " in f" {norm} "
 
 

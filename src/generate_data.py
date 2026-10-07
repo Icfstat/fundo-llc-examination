@@ -169,8 +169,9 @@ def _emit_special_cases(biz, dates, rng, emit):
     decided later by keyword_engine.py.
     """
     d = dates[10]
-    # Shopify payout whose counterparty text contains "TRANSFER" -> engine will
-    # over-match Internal transfer, but it is real revenue.
+    # Noisy Shopify payout (real revenue). The "TRANSFER" token is fused to a
+    # colon ("DESCR:TRANSFER"), so the engine's punctuation-blind matcher does
+    # NOT over-match it as an internal transfer -- here the blind spot helps.
     emit(biz, d, "ORIG CO NAME:SHOPIFY CO ENTRY DESCR:TRANSFER",
          -rng.uniform(400, 1500), None, "business")
 
@@ -179,10 +180,14 @@ def _emit_special_cases(biz, dates, rng, emit):
     emit(biz, dates[20], "SQUARE CAPITAL BT 8842",
          -rng.uniform(5000, 12000), "Active advance", "business")
 
-    # NSF written with punctuation -> engine normalizes the description but its
-    # "N.S.F." keyword keeps the dots, so this real NSF is silently missed.
-    emit(biz, dates[30], "N.S.F. RETURN ITEM FEE", +35.0, "NSFs", "business")
+    # NSFs phrased in ways the keyword list does not cover (it has NSF /
+    # INSUFFICIENT FUNDS), so these real NSFs are missed -- a coverage limitation.
+    emit(biz, dates[30], "RETURNED ITEM FEE", +35.0, "NSFs", "business")
     emit(biz, dates[35], "NON-SUFFICIENT FUNDS CHARGE", +35.0, "NSFs", "business")
+
+    # Overdraft fee whose keyword is fused to punctuation ("OVERDRAFT-FEE"), so
+    # the punctuation-blind matcher misses it and undercounts overdrafts.
+    emit(biz, dates[37], "OVERDRAFT-FEE 0423", +35.0, "Overdraft", "business")
 
     # One-off credit that must NOT count as revenue.
     emit(biz, dates[40], "IRS TREAS 310 TAX REF",

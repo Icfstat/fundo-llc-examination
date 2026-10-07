@@ -19,12 +19,15 @@ Safety:
 """
 
 import json
+import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import cache
 import keyword_engine as ke
 
 MODEL = "gpt-6-luna"
 GROUPS = ke.PRECEDENCE  # the 13 allowed groups
+MAX_WORKERS = 16        # the calls are I/O-bound, so run them concurrently
 
 SYSTEM_PROMPT = (
     "You review an automated engine that labels business bank transactions for "
@@ -83,38 +86,27 @@ def _derive_revenue(group, business_personal, amount) -> bool:
     return business_personal == "business" and amount < 0 and group is None
 
 
-def _call_model(client, prompt: str) -> dict:
-    """One Chat Completions call. Deterministic settings; JSON parsed out."""
-    resp = client.chat.completions.create(
-        model=MODEL,
-        temperature=0,
-        seed=7,
-        reasoning_effort="none",  # Luna is a non-reasoning, high-throughput model
-        response_format=RESPONSE_SCHEMA,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": prompt},
-        ],
-    )
-    return json.loads(resp.choices[0].message.content)
-
-
-def _review_one(txn: dict, client) -> dict:
-    """Return the reviewer record for one transaction, using the cache first."""
-    prompt = build_prompt(txn)
-    k = cache.key(MODEL, prompt)
-
-    raw = cache.get(k)
-    if raw is None:
-        if client is None:
-            raise RuntimeError(
-                "Cache miss and no API client. Set OPENAI_API_KEY and run once to "
-                "populate the cache, then commit cache/llm/. Missing key: " + k
+def _call_model(client, prompt: str, attempts: int = 3) -> dict:
+    """One Chat Completions call with deterministic settings. Retries a few
+    times on transient errors (rate limits, provider outages)."""
+    for i in range(attempts):
+        try:
+            resp = client.chat.completions.create(
+                model=MODEL,
+                temperature=0,
+                seed=7,
+                reasoning_effort="none",  # Luna is a non-reasoning, high-throughput model
+                response_format=RESPONSE_SCHEMA,
+                messages=[
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": prompt},
+                ],
             )
-        raw = _call_model(client, prompt)
-        cache.put(k, raw)
-
-    return _apply(txn, raw)
+            return json.loads(resp.choices[0].message.content)
+        except Exception:
+            if i == attempts - 1:
+                raise
+            time.sleep(2 ** i)
 
 
 def _apply(txn: dict, raw: dict) -> dict:
@@ -142,13 +134,42 @@ def _apply(txn: dict, raw: dict) -> dict:
     }
 
 
-def review_all(txns: list, client=None) -> list:
+def review_all(txns: list, client=None, max_workers: int = MAX_WORKERS) -> list:
     """Attach a 'reviewer' label (and the applied 'corrected' label) to each txn.
-    `client` is injected so tests can run without a network."""
+
+    Identical prompts share a cache key, so we resolve each UNIQUE prompt once:
+    cached ones are read, the rest are called concurrently. Results are mapped
+    back by key in transaction order, so the output is independent of the order
+    the concurrent calls finish. `client` is injected so tests run offline.
+    """
+    prepared = [(t, cache.key(MODEL, build_prompt(t))) for t in txns]
+
+    raw_by_key, missing = {}, {}
+    for t, k in prepared:
+        cached = cache.get(k)
+        if cached is not None:
+            raw_by_key[k] = cached
+        else:
+            missing[k] = build_prompt(t)
+
+    if missing:
+        if client is None:
+            raise RuntimeError(
+                "Cache miss and no API client. Set OPENAI_API_KEY and run once to "
+                "populate the cache, then commit cache/llm/. "
+                f"{len(missing)} prompt(s) uncached, e.g. {next(iter(missing))}"
+            )
+        with ThreadPoolExecutor(max_workers=max_workers) as pool:
+            futures = {pool.submit(_call_model, client, p): k for k, p in missing.items()}
+            for fut in as_completed(futures):
+                k = futures[fut]
+                raw_by_key[k] = fut.result()
+                cache.put(k, raw_by_key[k])
+
     out = []
-    for t in txns:
+    for t, k in prepared:
         t = dict(t)
-        rev = _review_one(t, client)
+        rev = _apply(t, raw_by_key[k])
         t["reviewer"] = rev
         t["corrected"] = {
             "group": rev["group"],
