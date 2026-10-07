@@ -20,6 +20,18 @@
     "reason": "Shopify payment is a business sales payout; ordinary processor revenue has no group.",
     "verdict": "agree"
   },
+  "0055fa224092ae2f3211dd5dca186b8098cbc8ce2c8df9a4e3bf0397d55d8b4c": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 1.0,
+      "evidence_strength": 0.99,
+      "group_fit": 1.0
+    },
+    "group": "NSFs",
+    "reason": "Explicit non-sufficient funds charge; outgoing fee is an NSF event.",
+    "verdict": "doubt"
+  },
   "006b68f555d44c24e56b050a3bc04de0b3d68ac5de97400790775a36ec462452": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -111,6 +123,18 @@
     "reason": "Clover payment-processor deposit is ordinary business sales revenue, not a special group.",
     "verdict": "agree"
   },
+  "01e9f8cc4db7bda330cb80eb7d172694464e4a0b5b4d5cd672d73cbe212cfb43": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not a movement between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "01fc6f200ebaca0b9c0311771496c56bf1588136bb65a04fbf30b7aa900d83b7": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -167,12 +191,36 @@
     "reason": "Commercial rent-related debit; no listed risk or transaction group applies.",
     "verdict": "agree"
   },
+  "03beb15edad260c33728e00c69b3a97df5f4c65033ddcc281c02299f60e9c3a3": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout, not an internal transfer; treat as revenue.",
+    "verdict": "doubt"
+  },
   "04160c47fd05a173e5105c09cf04f60224035efc42f1ed6aa91b5059822915f3": {
     "business_personal": "business",
     "confidence": 0.99,
     "group": null,
     "reason": "Clover credit is a payment-processor sales payout, treated as business revenue with no group.",
     "verdict": "agree"
+  },
+  "041e24cbcbe35742e88283c98f1ea3b8226e0ef62d6f8b34ceb6dd5890a45026": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": "Active advance",
+    "reason": "Square Capital credit is an MCA advance disbursement, not operating sales revenue.",
+    "verdict": "doubt"
   },
   "0452e9c48197139221559819a8479b7d5e00d4ff69569c74b02c2a18bcf5c091": {
     "business_personal": "business",
@@ -208,6 +256,18 @@
     "group": null,
     "reason": "Wholesale supply purchase is an ordinary business expense; no listed risk group applies.",
     "verdict": "agree"
+  },
+  "04d46b96c7ef89abbc64210079c0dbb427cd8ffcf4475f921806a3ab3a1018da": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a processor sales payout credit, not a movement between the business's own accounts.",
+    "verdict": "doubt"
   },
   "0502aeccecfc240e201a77a842a52dbff1167226a8498b596517a5b48f764178": {
     "business_personal": "business",
@@ -545,12 +605,36 @@
     "reason": "Adobe subscription is an ordinary business expense; no listed risk group applies.",
     "verdict": "agree"
   },
+  "0aea7a0a8030747c63492fea87ccfe2bed44247155cc704a5150406855f031b1": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout, not a transfer between owned accounts.",
+    "verdict": "doubt"
+  },
   "0af5a9c9951699ddc292f9f6bdf70b3242d9b1b0fce6feab5a53e932da7bf1cc": {
     "business_personal": "business",
     "confidence": 0.98,
     "group": null,
     "reason": "SQ payment-processor credit is ordinary business sales revenue; no special group applies.",
     "verdict": "agree"
+  },
+  "0b207be0519823252b66c42b0bfe9df8bfecf6b0b477bef696702cb593c517a5": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a processor payout credit and ordinary business revenue, not an internal transfer.",
+    "verdict": "doubt"
   },
   "0b3e737626feace21c223f28da81138b323e90959d8e82fa7174ee872dd418a7": {
     "business_personal": "business",
@@ -671,6 +755,18 @@
     "reason": "Stripe payment-processor credit is ordinary business sales revenue; no group applies.",
     "verdict": "agree"
   },
+  "0d4e685c0d7e42548be4bb2d7d0eb59fc903e1fd695086decc50c855e9e8ae51": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.82,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.9,
+      "group_fit": 0.96
+    },
+    "group": null,
+    "reason": "Credit from Square payment processing; SQ pet spa likely merchant descriptor, not a pet-care purchase.",
+    "verdict": "agree"
+  },
   "0d98f491145467fe49b286d3c449ebdd2c7f3e52f0666412b77efc76795029db": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -691,6 +787,18 @@
     "group": null,
     "reason": "Square credit is a payment-processor payout and ordinary business revenue.",
     "verdict": "agree"
+  },
+  "0de900923d7d896b772f2b843ffec41d20836638f812578b25fc7996b53cad4e": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not a movement between owned accounts.",
+    "verdict": "doubt"
   },
   "0def2cadb3f86de27318faad99e46c772285e091332da49959c012859389281b": {
     "business_personal": "business",
@@ -769,6 +877,30 @@
     "reason": "Commercial rent is an ordinary business expense; no listed risk group applies.",
     "verdict": "agree"
   },
+  "0f98271e439c65c4d9279955ca501a7d66edf29d9a869f73a105429eb0aa1cec": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": "Active advance",
+    "reason": "Square Capital credit is an MCA/advance disbursement, not operating sales revenue.",
+    "verdict": "doubt"
+  },
+  "0fffbb2e51af4458ec5078f9c898b9089f086f36b5306540a392a87c2f8dec73": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.88,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.82,
+      "group_fit": 0.9
+    },
+    "group": null,
+    "reason": "SQ indicates Square payment processing; credit is business sales revenue, not a non-operating credit.",
+    "verdict": "agree"
+  },
   "101e29abcfeb860705da048ec25339fac0964846856a7f18eef463ea33a66b11": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -838,6 +970,18 @@
     "group": null,
     "reason": "Venmo payment to a friend is a personal outgoing transfer; no listed risk group applies.",
     "verdict": "agree"
+  },
+  "11cf007f055df1d88a68687e8a6d8846452c80bc7367672e99c310e717a14164": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not an internal transfer; it is ordinary revenue.",
+    "verdict": "doubt"
   },
   "11d5607492f6596a0303a9cf54a5885bd4dc573e8b0a42a4b1f996a5e3da429a": {
     "business_personal": "business",
@@ -965,6 +1109,18 @@
     "reason": "Square payment-processor credit is ordinary business sales revenue, not an advance.",
     "verdict": "agree"
   },
+  "14cf4ec6e6d0fa497c3fe389bde3d7eabf0400a91fcd65a6223db7db45940da9": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.82,
+      "direction_consistency": 0.7,
+      "evidence_strength": 0.72,
+      "group_fit": 0.88
+    },
+    "group": null,
+    "reason": "SQ indicates Square processing; credit is consistent with a business sales deposit, not a grocery refund.",
+    "verdict": "agree"
+  },
   "14e75e8158850f7d6ce2f7264786f0b556108ee5e9d7b0ab111f23110bad4531": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -992,6 +1148,18 @@
     "group": null,
     "reason": "Gusto payroll is a business payroll debit; no listed group applies.",
     "verdict": "agree"
+  },
+  "157d3e59faa503a144060f3e34321dc89b7d37fe42c4c018877fafb52d68c673": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.96,
+      "group_fit": 0.98
+    },
+    "group": null,
+    "reason": "Stripe transfer is a sales payout credit, not movement between the business's own accounts.",
+    "verdict": "doubt"
   },
   "1590abcb203342fdec137f3ed7bb5793c04261d7f69e78b17b88b3ad0d94b8e1": {
     "business_personal": "business",
@@ -1048,6 +1216,18 @@
     "group": null,
     "reason": "Clover credit is a payment-processor payout and should be treated as business revenue.",
     "verdict": "agree"
+  },
+  "16c4c85f0e250dc6766eb5fde3f0abe3317de9591f26424188f2ecb1becc0c26": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": "Active advance",
+    "reason": "Square Capital credit is an MCA advance disbursement, not ordinary sales revenue.",
+    "verdict": "doubt"
   },
   "16c58e3e1623c0d2d835fdb10016c3f5d55acaf2125c38bc2dc8f2d811f27595": {
     "business_personal": "personal",
@@ -1147,6 +1327,18 @@
     "reason": "Stripe payment-processor credit is ordinary business sales revenue; no group applies.",
     "verdict": "agree"
   },
+  "187ef6075b62c331cc525ba5ef982f119f7d1696fd496067bc09f5d40531c4cb": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a sales payout credit, not a movement between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "18b280a8e7463e5ca6c698b605baefeee1d45b2436a1a9b7dfd49ed9c1e1fcdc": {
     "business_personal": "business",
     "confidence": 0.91,
@@ -1210,6 +1402,18 @@
     "reason": "Stripe payment-processor credit is ordinary business sales revenue; no group applies.",
     "verdict": "agree"
   },
+  "1937d0ce4da0c8393f59b397391c043368a7f6be4fe66d0b342350c6d400ba6e": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.82,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.9,
+      "group_fit": 0.96
+    },
+    "group": null,
+    "reason": "Credit from SQ*JOES TACOS is consistent with Square-processed business sales, not a restaurant purchase.",
+    "verdict": "agree"
+  },
   "195e2149532a0f4889f42a3ad3026ac483fcb301ffe581b6356ef7aedba9cc9a": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -1266,6 +1470,18 @@
     "reason": "Square payment-processor deposit is ordinary business sales revenue; no group applies.",
     "verdict": "agree"
   },
+  "1a06053421e2dab4377aeacea682d6873f1d2efb5e3986c81b110306dc0c22d5": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe credit is a processor sales payout, not a transfer between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "1a175ae193b7f10fed4e58a56a7ae4b9f7d33c88a5082c7ead8e0d31a4377ec7": {
     "business_personal": "personal",
     "confidence": 0.91,
@@ -1280,12 +1496,36 @@
     "reason": "Shopify payment-processor credit is ordinary business sales revenue, not a special group.",
     "verdict": "agree"
   },
+  "1a5226eac2c7165c20dad9aa73d33dd4de9a449924248a382230b467062d92e2": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.96,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout, not a movement between owned accounts.",
+    "verdict": "doubt"
+  },
   "1ac43aa6516d055a38942f6d71209e6d92601a3450574e46ab8f9aa79125d0b4": {
     "business_personal": "business",
     "confidence": 0.98,
     "group": null,
     "reason": "Shopify payment is a payment-processor sales payout, treated as business revenue with no group.",
     "verdict": "agree"
+  },
+  "1aef8f4652ad9dbe5c05792178ae4ff718934660eae16ae6b8f98db7bb524952": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe credit is a payment-processor sales payout, not an internal transfer.",
+    "verdict": "doubt"
   },
   "1b4050e4401436ea178babc31a905decd718b561c2ec1c3a499eb675b736ee63": {
     "business_personal": "business",
@@ -1314,6 +1554,18 @@
     "group": "Active advance",
     "reason": "Kabbage daily remittance is a payment to an MCA/cash-advance funder.",
     "verdict": "agree"
+  },
+  "1b88b8d33bfc0d23db46314752f0e343eec598055f5aa5cd0051f6ce80100398": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.96,
+      "group_fit": 0.98
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not a movement between owned accounts.",
+    "verdict": "doubt"
   },
   "1b911ecc86b53ce7769990aee2a47fdf6c170de1a41a3f393e1e9fd0a8ea5f99": {
     "business_personal": "personal",
@@ -1468,6 +1720,18 @@
     "group": null,
     "reason": "Shopify payment is a business sales payout; processor credits are revenue and carry no group.",
     "verdict": "agree"
+  },
+  "1e5862160e687a23c44277a1ca719bda1c316ccbb4f159a3e150d3697726be09": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.94,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.96,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe credit is a payment-processor sales payout, not a transfer between the business's own accounts.",
+    "verdict": "doubt"
   },
   "1e64c35cc56c4dedf194da162f7ab3c0f0a0f41f2961b558dfe394a0327c58b8": {
     "business_personal": "business",
@@ -1784,6 +2048,18 @@
     "reason": "Stripe payment-processor credit is ordinary business sales revenue; no group applies.",
     "verdict": "agree"
   },
+  "23fe030f62d10d11133e9681e23162e98e3c19dc7aa3428d114583e228055c0b": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not a transfer between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "24387cc7bb8b4797294a7a33136b282095d80edd3f3366c5b4782f8af3184859": {
     "business_personal": "personal",
     "confidence": 0.99,
@@ -1875,6 +2151,18 @@
     "reason": "Clover payment-processor deposit is ordinary business sales revenue, not a special group.",
     "verdict": "agree"
   },
+  "25b2548c6062c457a0ddb4108bc4ac95ce103e53d21d8b4f4a890bb445b025b9": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout, not a movement between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "25be254a0e46837afbd934dfc9deeeb3e04ceb99b4e8eeb7ee07fbdff2db00e6": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -1930,6 +2218,18 @@
     "group": null,
     "reason": "Clover payment-processor deposit is ordinary business sales revenue; no group applies.",
     "verdict": "agree"
+  },
+  "275b8400c632adffa0621b49db55b74fa6d8253c1b8b28d72c23a369e0e26371": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe credit is a payment-processor sales payout, not a transfer between owned accounts.",
+    "verdict": "doubt"
   },
   "27b245e8ddd876d39d52d6ce2b7f670c1b186e3044541baa0c55d06ba898c9be": {
     "business_personal": "business",
@@ -2190,6 +2490,18 @@
     "reason": "Wholesale supply purchase is an ordinary business expense; no listed risk group applies.",
     "verdict": "agree"
   },
+  "2cad6064ed3b9983d292dbf781f4cd45ee5777ef779ee8eba95f50de64885179": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.9,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.93,
+      "group_fit": 0.98
+    },
+    "group": null,
+    "reason": "SQ/Midtown Auto credit is consistent with a Square sales deposit; no refund or one-off indicator.",
+    "verdict": "agree"
+  },
   "2cb02d7a82c93fb77c09aa1d761050b6378c3b61386548c0d1e44897381bf10c": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -2442,6 +2754,18 @@
     "reason": "Adobe subscription is a business operating expense; no listed risk or transfer group applies.",
     "verdict": "agree"
   },
+  "31eeb32641e0a1436d0429dcbcf5146a2b51d717fc83c0c4dcbfde012931a3d8": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.86,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.9,
+      "group_fit": 0.95
+    },
+    "group": null,
+    "reason": "Credit from Square (SQ) is consistent with payment-processor sales revenue, not a restaurant purchase.",
+    "verdict": "agree"
+  },
   "31f024ed274ec5675f0f93d7bb3a02aaa469c823f057b1a0e84c7833b2923524": {
     "business_personal": "business",
     "confidence": 0.91,
@@ -2469,6 +2793,30 @@
     "group": null,
     "reason": "Shopify payment-processor credit is ordinary business sales revenue, not a separate group.",
     "verdict": "agree"
+  },
+  "32196da43ed7e0410a3a56f3ef459deb78882713261678634beb41a5d9d30b27": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.88,
+      "direction_consistency": 0.82,
+      "evidence_strength": 0.76,
+      "group_fit": 0.78
+    },
+    "group": "Not average monthly revenue",
+    "reason": "Incoming SQ merchant credit is likely a refund, not recurring sales revenue.",
+    "verdict": "doubt"
+  },
+  "321c403ad06260ab5b119b41c1f33736e5322d87b97652542165e4c7cb1de2ac": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a processor sales payout credit, not a movement between the business's own accounts.",
+    "verdict": "doubt"
   },
   "322a12005b7956566ac8ec93ca3971678c5415ec4980581f5fa7087fddfcee85": {
     "business_personal": "business",
@@ -2526,6 +2874,18 @@
     "reason": "OnDeck daily remittance is a payment to an MCA/cash-advance funder.",
     "verdict": "agree"
   },
+  "33167ae25a3249b53c5bfa7116fc387df6399479b5dd2455dc5f1a770675cbc8": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.9,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.9,
+      "group_fit": 0.95
+    },
+    "group": null,
+    "reason": "SQ *BELLA SALON is a Square merchant sales credit; no evidence it is a refund or reversal.",
+    "verdict": "agree"
+  },
   "332459f65d265f0e0543dbfa7a4763a764ab1b7a7c8eccb5ee8a6e66bf74f994": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -2553,6 +2913,18 @@
     "group": null,
     "reason": "Gusto payroll is a business operating expense; no listed risk group applies.",
     "verdict": "agree"
+  },
+  "3398f3ab988e6c04b62c81ebfdff633c53e93b1889103a5b527e4abb46a4292f": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not an internal transfer; it is revenue.",
+    "verdict": "doubt"
   },
   "33d084ee123c7dd953a629bfee19a2d3e90ee86224a2327eecde388a0935dda3": {
     "business_personal": "business",
@@ -2624,6 +2996,30 @@
     "reason": "SQ payment-processor credit is treated as ordinary business sales revenue.",
     "verdict": "agree"
   },
+  "35927eb7e53a62de27e118d0e0b9caae80c1a8afeb4c2567d2283ced6abe3a4c": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe credit is payment-processor sales revenue, not a transfer between owned accounts.",
+    "verdict": "doubt"
+  },
+  "359790db06b7b9d2a1e2f6a60752847cde649b56d58a424b54b393d88518c71a": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout, not a movement between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "35ebcc388f9261d0a1bab454b2bab5a0ae3818b299372ca515a18de8f0ec9377": {
     "business_personal": "business",
     "confidence": 0.91,
@@ -2687,12 +3083,36 @@
     "reason": "Commercial rent-related debit is a business expense; no listed group applies.",
     "verdict": "agree"
   },
+  "36d0501f5804bd3ffc7c9dc49db30224f9c50e0109be78197a87189514344ca1": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.97,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not a movement between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "36d74c62f084f647cdbea17b72592ae8697131de793ec2ff4e312b8c13df31e2": {
     "business_personal": "business",
     "confidence": 0.98,
     "group": null,
     "reason": "Shopify payment is a business payment-processor payout, treated as sales revenue.",
     "verdict": "agree"
+  },
+  "3705deca74ca6f4fa72fcb6c1fa3cd5489c14c7005d4e92c136aefd2d83694bf": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not a movement between own accounts.",
+    "verdict": "doubt"
   },
   "370b3f67908647744544c61bb70e0310730f14e8cfd37d462b9568621623caea": {
     "business_personal": "business",
@@ -2722,6 +3142,18 @@
     "reason": "Clover is a payment processor; its credit is ordinary business sales revenue.",
     "verdict": "agree"
   },
+  "37953c4885de4891ba7ca3537686332916bea2e9880c0dbe328e797e365e0d80": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe credit is a payment-processor sales payout, not a transfer between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "37bcb50e8965a08170f8bbcb661bff90191c517f733a652020e39feaaa6fa081": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -2749,6 +3181,18 @@
     "group": null,
     "reason": "SQ indicates a Square payment-processor payout; ordinary sales credits have no group and are business revenue.",
     "verdict": "agree"
+  },
+  "3823af2778ebba590b52ed4b68684073e071e3c4492f7754844d080eb985baa5": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout, not a transfer between the business's own accounts.",
+    "verdict": "doubt"
   },
   "38254e386f8a8ab51b97ddb2e429a8b78ed359dee8af2db2fa7f25cbcab3bd92": {
     "business_personal": "business",
@@ -3163,6 +3607,18 @@
     "reason": "Stripe payout is a payment-processor sales credit, not an internal transfer; it is business revenue.",
     "verdict": "doubt"
   },
+  "40b44cd322651a1cf2fe118333598acbbbbfaa241ceb1d9a021dae3c094dba2a": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.78,
+      "direction_consistency": 0.72,
+      "evidence_strength": 0.65,
+      "group_fit": 0.67
+    },
+    "group": "Not average monthly revenue",
+    "reason": "Inbound credit from a salon merchant is more consistent with a refund than recurring operating revenue.",
+    "verdict": "doubt"
+  },
   "40db0a5ac3f984c1052c93f4d06398d920a46e0b281022b85a697a1e1bc00343": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -3205,12 +3661,36 @@
     "reason": "SQ payment-processor credit is ordinary business sales revenue; no special group applies.",
     "verdict": "agree"
   },
+  "426864acf17afa78ca2d9d2ce01df003b57c9f3945d44dbca12ef4c1888b61e5": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.93,
+      "direction_consistency": 0.96,
+      "evidence_strength": 0.9,
+      "group_fit": 0.94
+    },
+    "group": null,
+    "reason": "Square deposit for Print Shop is processor sales revenue; no Square Capital/MCA indicator.",
+    "verdict": "agree"
+  },
   "426eb2632f45209d1d0bcef0976fcea77e09b1d2a8ed83ea28df3512ee8a2973": {
     "business_personal": "business",
     "confidence": 0.98,
     "group": null,
     "reason": "Adobe subscription is an ordinary business expense; no specified risk or transfer group applies.",
     "verdict": "agree"
+  },
+  "4281d81628aaf2447b1b74d5499ecaab6cf33bb034f26c0958bc868705dd541f": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.95,
+      "group_fit": 0.98
+    },
+    "group": null,
+    "reason": "Stripe transfer is a sales payout credit, not a movement between the business's own accounts.",
+    "verdict": "doubt"
   },
   "42bab4dc11d33238212cce2f82171320c061eff024ab63a0a13d2755f4420190": {
     "business_personal": "business",
@@ -3310,11 +3790,35 @@
     "reason": "Non-sufficient funds charge is an NSF fee.",
     "verdict": "doubt"
   },
+  "444bfebfaf13416cdafe881847b9dc78573c7599fb7655d98ac99e5266a6caa0": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a sales payout credit, not a movement between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "44983fbd85d7e7489d162d82b27e69cbb29db39293e7b79d5e6f08a37bf99a51": {
     "business_personal": "business",
     "confidence": 0.99,
     "group": "Active advance",
     "reason": "OnDeck daily remittance is a payment to a cash-advance funder.",
+    "verdict": "agree"
+  },
+  "44f71822970746e0bd4be024fa60b6f95ba9c6f25547459d90224efaae0e46b0": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.96,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Shopify Payments credit is a payment-processor sales payout, not an MCA/advance remittance.",
     "verdict": "agree"
   },
   "44f72510e3201ec22064fb16eb283f3ca7ae6633ef6521a0a10a1636c98df54f": {
@@ -3392,6 +3896,18 @@
     "confidence": 0.99,
     "group": null,
     "reason": "Square payment-processor credit is ordinary business sales revenue, not an advance.",
+    "verdict": "agree"
+  },
+  "462fa50ca5d7f7d0c2740a9dc6d4b4ff13e795ac1d7e7cc1b5a3d99cc00ed30e": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.93,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.91,
+      "group_fit": 0.97
+    },
+    "group": null,
+    "reason": "Shopify Payment credit is a processor sales payout; no indication it is a refund or reversal.",
     "verdict": "agree"
   },
   "4631c08edfd3216ad27ca193dd638e13c479468de6e49ddcc7f02a1f952f910b": {
@@ -3520,6 +4036,18 @@
     "reason": "Square deposit is a payment-processor sales payout, treated as business revenue with no group.",
     "verdict": "agree"
   },
+  "47f496759ee9c8341d99aa991cb7b18dd54c0d6cd5e1f325db8fb7dd11894aba": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.88,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.86,
+      "group_fit": 0.96
+    },
+    "group": null,
+    "reason": "SQ credit from identifiable salon merchant is a likely payment-processor sale, not evidence of a refund or reversal.",
+    "verdict": "agree"
+  },
   "483ad5aff38310e993b2a0cff1c41f331179daf11503effbf511bd5db64b3ce3": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -3555,6 +4083,18 @@
     "reason": "Commercial rent is an ordinary business expense; no listed group applies.",
     "verdict": "agree"
   },
+  "48b053b963ae959fa1e1415b5c929919f58a04ec18a3e2da23d07d57f411b5fb": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.94,
+      "group_fit": 0.98
+    },
+    "group": null,
+    "reason": "Stripe credit is a payment-processor sales payout, not an internal transfer.",
+    "verdict": "doubt"
+  },
   "48c77c6a4496869712fd3f1cee2f1e1e43ef5d94bce884bfc2d043877599b1a0": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -3583,6 +4123,18 @@
     "reason": "Adobe subscription is an ordinary business expense; no listed risk group applies.",
     "verdict": "agree"
   },
+  "495af9fa2e762b897695838885d6c11c0ee4da8398a95107b8bb10838ed90510": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe credit is a payment-processor sales payout, not a transfer between owned accounts.",
+    "verdict": "doubt"
+  },
   "4963384fd6999762a8ae5b98acb68c2dfeebdbbd02b953f033c13dcc5604eeec": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -3604,6 +4156,18 @@
     "reason": "Wholesale supply purchase is an ordinary business expense; no specified risk group applies.",
     "verdict": "agree"
   },
+  "49faf208403fe0206b16a91aac7c4a42eb4f7702e1bc85b3590a37ab4563008e": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.94,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.96,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a processor sales payout credit, not a movement between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "4a22f9d529e42d23ed9fff28097364e90102ab02e4f140cb59f99f1fa243fcf4": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -3617,6 +4181,18 @@
     "group": null,
     "reason": "Square payment-processor credit is ordinary business sales revenue, not an advance.",
     "verdict": "agree"
+  },
+  "4a8e451e90a4a0fa789922ca4dc55af13b836049d052403e1decfc66e3c5b9f4": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.96,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout, not a movement between owned accounts.",
+    "verdict": "doubt"
   },
   "4af8047ab84314043625b3bf49f2b2cf0ef22b5ea122ff0907c8f45bfd81f35c": {
     "business_personal": "business",
@@ -3700,6 +4276,18 @@
     "confidence": 0.98,
     "group": "Not average monthly revenue",
     "reason": "IRS tax refund credit is a one-off, non-operating business credit, not recurring sales revenue.",
+    "verdict": "agree"
+  },
+  "4cc1ffe3f2d150525dd566c1363dd8e8aa1f8bb9439d82c69103f4189ea78b8c": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.85,
+      "direction_consistency": 0.9,
+      "evidence_strength": 0.8,
+      "group_fit": 0.93
+    },
+    "group": null,
+    "reason": "SQ indicates Square payment processing; inbound credit is consistent with sales revenue, not a one-off non-operating credit.",
     "verdict": "agree"
   },
   "4cc3f51c41b472bdfa8d022879539b72994fdd7e80f45a5f0b14f0979a8948b3": {
@@ -3898,12 +4486,36 @@
     "reason": "Utility bill is an ordinary business operating expense; no listed risk group applies.",
     "verdict": "agree"
   },
+  "503b3066fac439fc96a4abc40dbac55e366506de5c666204f5524c75dfd3581e": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer credit is payment-processor sales revenue, not a movement between own accounts.",
+    "verdict": "doubt"
+  },
   "50419a729345c87e83d3233d028eb55582bfc5396abcc1423bae56f1f16024af": {
     "business_personal": "business",
     "confidence": 0.99,
     "group": null,
     "reason": "Shopify payment is a business sales payout; processor credits are revenue and carry no group.",
     "verdict": "agree"
+  },
+  "504b10356744f02e50989efe394dfc445f3c1155e6c91de323b491b74866505a": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.96,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not a movement between the business's own accounts.",
+    "verdict": "doubt"
   },
   "508434b98eda64d36268eb1f17f33d2e83bccc072e2d67376dc9c6e1833e46e3": {
     "business_personal": "business",
@@ -3946,6 +4558,30 @@
     "group": null,
     "reason": "Square deposit is a payment-processor sales credit and counts as business revenue.",
     "verdict": "agree"
+  },
+  "5167e3931863c9b2e84048be793ae30ee06365eb1bf739630fb2528b91cbfe74": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.93,
+      "group_fit": 0.98
+    },
+    "group": null,
+    "reason": "Stripe credit is a payment-processor sales payout, not a transfer between owned accounts.",
+    "verdict": "doubt"
+  },
+  "51ab1840968656eb00ed555186d8d6fa8d765b57832a94764b21425164a71f6f": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.96,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe credit is a payment-processor sales payout, not a transfer between the business's own accounts.",
+    "verdict": "doubt"
   },
   "5230466f412fb5030b13501b17d71391d0d9ddc0b1afb6a7788dddf6c9d51ff8": {
     "business_personal": "business",
@@ -4029,6 +4665,18 @@
     "confidence": 0.98,
     "group": null,
     "reason": "SQ indicates a Square payment-processor payout; ordinary sales credits are business revenue with no group.",
+    "verdict": "agree"
+  },
+  "53cf40a8ffd23368cc6982174d520604e6ed32aafea9a7cb32da696ec5e4c102": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.82,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.88,
+      "group_fit": 0.96
+    },
+    "group": null,
+    "reason": "Square credit indicates payment-processor sales revenue; Yoga Loft is likely the merchant descriptor.",
     "verdict": "agree"
   },
   "53ed43713da20f0c10ac21f6a061634758bd3cb68afd44a9d541c8d2a64fb0a0": {
@@ -4129,6 +4777,30 @@
     "reason": "Gusto payroll is a business operating expense; no listed group applies.",
     "verdict": "agree"
   },
+  "56074cdea7402611dbd0517b09bdf1d93bd7758c05c4c97d6883e2ee05ebfaca": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.78,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.82,
+      "group_fit": 0.9
+    },
+    "group": null,
+    "reason": "Square credit from PRINT SHOP is consistent with payment-processor sales revenue, not a confirmed refund.",
+    "verdict": "agree"
+  },
+  "56a168b3890f9fc470c7268700a7895c4331b7465f7961225b13470b5c4a1cab": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a processor sales payout credit, not movement between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "56d188dcad96912f7ad0353154fc05cd4f2635d3228fea71e5a02752947b2094": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -4142,6 +4814,18 @@
     "group": "Internal transfer",
     "reason": "Transfer to savings is a movement between the business's own accounts.",
     "verdict": "agree"
+  },
+  "56f7c49b0fa72648311d93ac4e57b0bdad98fac4979cee5787deaef00876cd2a": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": "Active advance",
+    "reason": "Square Capital credit is an MCA advance disbursement, not ordinary sales revenue.",
+    "verdict": "doubt"
   },
   "57027e6e550e8dad1295fbe3923028375ba5ee6122df7b5730127df5fde5cc80": {
     "business_personal": "business",
@@ -4192,6 +4876,18 @@
     "reason": "Netflix subscription is a personal entertainment expense; no specified risk group applies.",
     "verdict": "agree"
   },
+  "58234c288aed2f65c744d6ca2b7b645dbc36419da1c9333bbba68bf2cf82af89": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a business payment-processor sales credit, not a transfer between owned accounts.",
+    "verdict": "doubt"
+  },
   "583dc7e3d016f572acaa6ca1ba7255c4484b4222cd4da0593628417de8b41904": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -4212,6 +4908,18 @@
     "group": null,
     "reason": "Stripe payment-processor credit is ordinary business sales revenue; no group applies.",
     "verdict": "agree"
+  },
+  "5850e4e8f2c29c7e4985eaaadcbc18f0fd7cc65be2e29a26b0e508914953c072": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer credit is payment-processor sales revenue, not an internal transfer.",
+    "verdict": "doubt"
   },
   "5864f122e54c93d67272947ff433953c5c9f090adba86f9e20e7caa75f4c401a": {
     "business_personal": "business",
@@ -4247,6 +4955,18 @@
     "group": null,
     "reason": "Stripe payment-processor credit is ordinary business sales revenue; no group applies.",
     "verdict": "agree"
+  },
+  "59416e052d678557b5a4e0cd2f8551080ab0e01bea1813426aa3a23d0f292732": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout, not a movement between the business's own accounts.",
+    "verdict": "doubt"
   },
   "5947066e157c9138d12515ba54d291c672639009e4a2276b87fbc8a183c27330": {
     "business_personal": "business",
@@ -4360,6 +5080,18 @@
     "reason": "Starbucks is a personal purchase; no listed risk or transaction group applies.",
     "verdict": "agree"
   },
+  "5b64c996d393c8e837985173f858bea1f1f7ca83f8ec4ebfa70d93b49a775095": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not an internal transfer.",
+    "verdict": "doubt"
+  },
   "5bad374fbb793317a9c20284dd95bee296784cd379b45933048ef954bb96ed66": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -4458,6 +5190,18 @@
     "reason": "Venmo payment to a friend is a personal outgoing transfer; no listed risk group applies.",
     "verdict": "agree"
   },
+  "5eddb440c91e99fed1540051648c9c10ef7af07d2e55a2468a9bd512ab62a264": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.96,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout credit, not an internal account transfer.",
+    "verdict": "doubt"
+  },
   "5f04f5cb567891513c430d0f6cb9d23e11ee9ac0555bd2eaa9216d6abde5e75e": {
     "business_personal": "business",
     "confidence": 0.94,
@@ -4520,6 +5264,18 @@
     "group": null,
     "reason": "Square payment-processor credit is ordinary business sales revenue, not a special group.",
     "verdict": "agree"
+  },
+  "5faa88a9e7a146ce6db1001a8bcb925827ce30e452e7145fe94d69824fecf64b": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe credit is a payment-processor sales payout, not a transfer between owned accounts.",
+    "verdict": "doubt"
   },
   "5fb56d57e6a6176ddedc994b0deac4c8ce109a7168d2c6576c1623eab3a1634b": {
     "business_personal": "business",
@@ -4626,6 +5382,18 @@
     "reason": "OnDeck daily remittance is a payment to a cash-advance funder.",
     "verdict": "agree"
   },
+  "610b13aeaba0c3382f1813e59137ac9a735de874371752773b8fc2bd3efcb553": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not a transfer between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "610bd6bbfbaf9bd02d0cf09a5888358143c318d4c9abfd17dc1a129f91efa4de": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -4687,6 +5455,18 @@
     "confidence": 0.98,
     "group": null,
     "reason": "Stripe payout is ordinary payment-processor sales revenue, not an internal transfer.",
+    "verdict": "doubt"
+  },
+  "62cde70c30ee3379df8e44c249702381c77a74415675ec03b76114e0f28f7724": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.96,
+      "group_fit": 0.98
+    },
+    "group": null,
+    "reason": "Stripe credit is a processor sales payout, not a transfer between owned accounts.",
     "verdict": "doubt"
   },
   "62da9d6023c67a0680d9261e81f461a247ef187c26fb0db5d54540062fb27557": {
@@ -4808,6 +5588,18 @@
     "reason": "Utility bill payment is an ordinary business operating expense; no listed group applies.",
     "verdict": "agree"
   },
+  "65316f58ba82219e53b63da43306170f47706c3beab8dec01159dd7c18321628": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout, not a movement between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "65399b657b6294afcffa480b6028192328e3eb0bdbf94a9c26c0e5eb803a4c21": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -4911,6 +5703,18 @@
     "confidence": 0.99,
     "group": "Internal transfer",
     "reason": "Transfer to savings indicates movement between the business's own accounts.",
+    "verdict": "agree"
+  },
+  "674d68dac433fe129ce0eb93246f0264a386bf47a785e9b649ed19d2e6c2a1f0": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.76,
+      "direction_consistency": 0.9,
+      "evidence_strength": 0.78,
+      "group_fit": 0.88
+    },
+    "group": null,
+    "reason": "Square credit from Bella Salon is consistent with processor sales; no refund or reversal indicator.",
     "verdict": "agree"
   },
   "6758be47e9e79b69a421ea4522e3ab22c832b67a796cda613d407f3ba36af737": {
@@ -5025,12 +5829,36 @@
     "reason": "Wholesale invoice credit from a business customer; ordinary business revenue.",
     "verdict": "agree"
   },
+  "690f5a136b320ea620b1cfac6e1332d796e7ec883fcb80aca19661b84f2543f1": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a processor sales payout credit, not a transfer between the business\u2019s own accounts.",
+    "verdict": "doubt"
+  },
   "692a0e57639aadd5886d91bd22c25e9b340000d11049ea8f9617e1ae299287a7": {
     "business_personal": "business",
     "confidence": 0.98,
     "group": null,
     "reason": "Square deposit is a payment-processor sales payout, treated as business revenue with no group.",
     "verdict": "agree"
+  },
+  "692ffa4e0613617a3330c251d54ec84e6d52831691334656f38b663a219a0643": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not a movement between the business\u2019s own accounts.",
+    "verdict": "doubt"
   },
   "693484f4d0960bc7a7f8cc2702ed8bfba5d8d3025168966143f028e1653b938c": {
     "business_personal": "business",
@@ -5186,6 +6014,18 @@
     "reason": "Square payment-processor deposit is ordinary business sales revenue; no group applies.",
     "verdict": "agree"
   },
+  "6c44e86c71cc8333f3b4097f8e0b3754e55d57e61e53308d0d08190603c7f501": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe credit is a processor payout/sales revenue, not a transfer between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "6c4e020afe79441d704b79608b97fbb074d199ef6dbd15175218a7975d13abe5": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -5249,6 +6089,18 @@
     "reason": "Stripe payment-processor credit is ordinary business sales revenue; no group applies.",
     "verdict": "agree"
   },
+  "6e3d23116cf9d8509210a87023843a2f516bc2abcd718e025cdbc47154410dfd": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.95,
+      "group_fit": 0.98
+    },
+    "group": null,
+    "reason": "Stripe transfer credit is a payment-processor sales payout, not an internal transfer.",
+    "verdict": "doubt"
+  },
   "6eb493ab78361f5a832110f091aaaef42855777b867f89ca5a25103e50c1b296": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -5262,6 +6114,18 @@
     "group": null,
     "reason": "Square payment-processor deposit for a print shop is ordinary business sales revenue.",
     "verdict": "agree"
+  },
+  "6f19828a1629c1ec2fe0927200c30feebb6c1c8fb0b4bea2fca98f6723b86522": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.96,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout credit, not a movement between the business's own accounts.",
+    "verdict": "doubt"
   },
   "6f2b02b511ae6d34b54f02d89b18b147944102f7769cfcb3a170dbab8d1f7e53": {
     "business_personal": "business",
@@ -5338,6 +6202,18 @@
     "confidence": 0.98,
     "group": null,
     "reason": "Adobe subscription is an ordinary business software expense; no listed group applies.",
+    "verdict": "agree"
+  },
+  "71139eae8220ce4624254611bbb356172a548f813e05ca28aef903989dffc774": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.72,
+      "direction_consistency": 0.96,
+      "evidence_strength": 0.82,
+      "group_fit": 0.91
+    },
+    "group": null,
+    "reason": "Incoming SQ credit is consistent with Square-processed business sales, not a salon purchase expense.",
     "verdict": "agree"
   },
   "711bded3dee3612f470f3b1240dab109295b3242a3962627467ff608fd2b8417": {
@@ -5452,6 +6328,18 @@
     "reason": "Clover payment-processor deposit is ordinary business sales revenue, not a special group.",
     "verdict": "agree"
   },
+  "73c23a7e55051c6256d4930056974d7380623156ba830f4552aaf743a217b456": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout credit, not an internal account transfer.",
+    "verdict": "doubt"
+  },
   "73c9c3e6f3b69eaf1f7df89c4314918539cf55d1323dff28b54c9516c7feb74c": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -5522,6 +6410,18 @@
     "reason": "Wholesale supply purchase is an ordinary business expense; no listed risk group applies.",
     "verdict": "agree"
   },
+  "75750e3895be3650f65d8757610d667402e7f620e6879da926d3b4d97c2b34fa": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout, not a movement between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "75809a519f6f9d22ee9d291c1a1ec1e59dad9b4f43c24e24874faf4099dc03a9": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -5577,6 +6477,30 @@
     "group": null,
     "reason": "Square payment-processor credit is ordinary business sales revenue, not a special group.",
     "verdict": "agree"
+  },
+  "7643536920fa254f5c5b6b5947143b4e649adc2fb2bf5802fa83af57f5baf10b": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not a movement between the business's own accounts.",
+    "verdict": "doubt"
+  },
+  "764789b186de44d0735907fc6833903c9c58a54bf153e702ee04e464121d19f8": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not a transfer between owned accounts.",
+    "verdict": "doubt"
   },
   "76513745d4baa634ad9c701b0ac367963588cb68d820c037c1b0a514adfb874c": {
     "business_personal": "business",
@@ -5669,6 +6593,18 @@
     "reason": "Adobe subscription is an ordinary business expense; no specified risk group applies.",
     "verdict": "agree"
   },
+  "789e4dbb33d1d1569624be32f24d2b23a0e73b9078321324bccc3aa6367286b4": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.96,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe credit is a payment-processor sales payout, not a transfer between the business\u2019s own accounts.",
+    "verdict": "doubt"
+  },
   "78d4c045aa5e5cafc1dada49ee85dfbbd114deed7531eecbfac39b4ef7cfeb85": {
     "business_personal": "business",
     "confidence": 0.96,
@@ -5681,6 +6617,18 @@
     "confidence": 0.98,
     "group": null,
     "reason": "Venmo payment to a friend is a personal outgoing transfer; no listed group applies.",
+    "verdict": "agree"
+  },
+  "79077f2099793ae4422f1b95403d85092e25c981233fee6da9da1655105cc1b4": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.78,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.84,
+      "group_fit": 0.93
+    },
+    "group": null,
+    "reason": "Square credit from Yoga Loft is consistent with payment-processor sales revenue, not a personal expense.",
     "verdict": "agree"
   },
   "792a69e5884b30cb8eee259774e2b6355d7971a5768c86d560df31daa3946111": {
@@ -5779,6 +6727,30 @@
     "confidence": 0.96,
     "group": null,
     "reason": "Stripe payout is a payment-processor sales credit, not an internal transfer; ordinary sales revenue.",
+    "verdict": "doubt"
+  },
+  "7ae6a4a4f85b16d56794cee2ed870f49e739309502f77c38d98d9fba92b3cac1": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout, not a movement between owned accounts.",
+    "verdict": "doubt"
+  },
+  "7b0f9e01b3cd0357ef6e7a22ca3750d65c338c33c24602db52cdf057dd86e582": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.96,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not a movement between the business's own accounts.",
     "verdict": "doubt"
   },
   "7b15466810a31623eea0043ba5b02e340ec419f183c543298b95b8abd8bc5e33": {
@@ -5963,6 +6935,18 @@
     "reason": "Shopify payment-processor credit is ordinary business sales revenue, not a separate group.",
     "verdict": "agree"
   },
+  "7dbe0225b43945870f0cbdbd045e1ce7990c28ef1c1b2bd70d25df4caf4e02ad": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer credit is payment-processor sales revenue, not a movement between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "7dd9cb1a9e6a47e84beee18efc2d333c914d12475c55f7c2fb47bff0d8970d88": {
     "business_personal": "personal",
     "confidence": 0.99,
@@ -6032,6 +7016,18 @@
     "group": "Active advance",
     "reason": "Kabbage is an MCA funder; this debit is a daily remittance.",
     "verdict": "agree"
+  },
+  "7f17ae03ba3dcf349c8fc4fccfa32622635516707afe182a54d12d2e67876b20": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout credit, not a transfer between owned accounts.",
+    "verdict": "doubt"
   },
   "7f282f34702e3cd5c097658e122127edbe06787b6d844f111a44a1bfc09c1490": {
     "business_personal": "business",
@@ -6117,6 +7113,18 @@
     "reason": "Wholesale supply purchase is an ordinary business expense; no listed group applies.",
     "verdict": "agree"
   },
+  "8071d9b6ed486c2c26221b2ce506cb8c1f1e77454e5efd0c8eefdb399082cb92": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.72,
+      "direction_consistency": 0.96,
+      "evidence_strength": 0.82,
+      "group_fit": 0.93
+    },
+    "group": null,
+    "reason": "Credit from SQ/Square is consistent with payment-processor sales revenue, not a grocery purchase.",
+    "verdict": "agree"
+  },
   "80a6ca430385071699a2b90243ed6de8cbb98a72105816b2ebdf4509d167f0cf": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -6145,11 +7153,35 @@
     "reason": "Square payment-processor deposit is ordinary business sales revenue; no group applies.",
     "verdict": "agree"
   },
+  "8109d32d0650de1e3143370b8bb7dc5e107a445e7c0f8d18b56fa5a2022e21d2": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": "Active advance",
+    "reason": "Square Capital credit is an MCA advance disbursement, not operating sales revenue.",
+    "verdict": "doubt"
+  },
   "811373f01428d87a30904946f3bf4c3cffbd38eb4557fd8b390db31860d78894": {
     "business_personal": "business",
     "confidence": 0.99,
     "group": "Internal transfer",
     "reason": "Transfer to savings indicates movement between the business's own accounts.",
+    "verdict": "agree"
+  },
+  "8169ab62ed87eae8cb2ea1265edc159cfb9d73667e8dc7b06dad7bf588de3417": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.72,
+      "direction_consistency": 0.9,
+      "evidence_strength": 0.76,
+      "group_fit": 0.88
+    },
+    "group": null,
+    "reason": "Square credit is consistent with payment-processor sales; no refund or reversal indicator.",
     "verdict": "agree"
   },
   "8176147cb1ca8ed4c31c4bb6f338fd9a68f730fd8f827fbca376b30432e48df0": {
@@ -6192,6 +7224,18 @@
     "confidence": 0.98,
     "group": null,
     "reason": "Clover payment-processor deposit is ordinary business sales revenue, not a special group.",
+    "verdict": "agree"
+  },
+  "823fc64eb47e0dae9c2d0ac0041e7d861778cfbc2239d3ffb84f4aca92ecdd7f": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.86,
+      "direction_consistency": 0.94,
+      "evidence_strength": 0.84,
+      "group_fit": 0.95
+    },
+    "group": null,
+    "reason": "Shopify Payment is a processor sales credit; no Shopify Capital/advance identifier is present.",
     "verdict": "agree"
   },
   "824fe35794c7ea9fd6b9aca7f504bab504a0749ab3957d7bed255e8e542d9f06": {
@@ -6264,6 +7308,18 @@
     "reason": "Adobe subscription is an ordinary business expense; no listed risk or transfer group applies.",
     "verdict": "agree"
   },
+  "83dbd29bce2d993e7f78b03178cbf3bb216806fda62ba81aab766a11bbfc08b7": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not an internal transfer.",
+    "verdict": "doubt"
+  },
   "847cc4cdcf4a4d021c9d1ce78cfcad87baeef28a6c0032638cd78303436ccb82": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -6292,12 +7348,36 @@
     "reason": "Stripe payout is a payment-processor sales credit, not an internal transfer; ordinary sales revenue.",
     "verdict": "doubt"
   },
+  "8519eb978a01f14f1043d4a57f6f71f9be96f9c771642260e9adca06c9571af0": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.96,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not a movement between owned accounts.",
+    "verdict": "doubt"
+  },
   "85353c04f98cb6bacf4fd9fececfaf011dc218dea90c1c825ee041eb036740e0": {
     "business_personal": "business",
     "confidence": 0.99,
     "group": "Internal transfer",
     "reason": "Transfer to savings is a movement between the business\u2019s own accounts.",
     "verdict": "agree"
+  },
+  "856d91e6a906ff141db259e492a582f658f50c0486a9cabab36c45260059c1d8": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.96,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout, not a movement between owned accounts.",
+    "verdict": "doubt"
   },
   "8583edfd2164b9cd8f379835bb507d5294decd4e4a020a4c6507e85fbfe1561e": {
     "business_personal": "business",
@@ -6341,12 +7421,36 @@
     "reason": "Square payment-processor credit is ordinary business sales revenue; no special group applies.",
     "verdict": "agree"
   },
+  "865444c163a8c7ada6ed54d3f732978287461f8be5d2f99038ccf5c3fa2bd159": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.9,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.9,
+      "group_fit": 0.95
+    },
+    "group": null,
+    "reason": "Plaid negative indicates credit; Shopify payment is a likely sales payout and counts as revenue.",
+    "verdict": "agree"
+  },
   "866a450bb53a4b9050effc908bd6ba8645b17780a902ba072072a52d9a03e03e": {
     "business_personal": "business",
     "confidence": 0.99,
     "group": "Internal transfer",
     "reason": "Transfer to savings is a movement between the business\u2019s own accounts.",
     "verdict": "agree"
+  },
+  "868266a2c1d48283f6d3b2935bd77f7485361a0182ed3347df70ee61c1980744": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout, not a transfer between owned accounts.",
+    "verdict": "doubt"
   },
   "86952d12a8b79e195f8e6a00cebd01a3e378394ec6d2f1dbf7086d014feb2897": {
     "business_personal": "business",
@@ -6389,6 +7493,18 @@
     "group": "Active advance",
     "reason": "Kabbage daily remittance is a payment to an MCA/cash-advance funder.",
     "verdict": "agree"
+  },
+  "87058417ad5776f3644af27b064a1d35e3cd6c420b873e1c3eabb379d578d2ca": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe credit is payment-processor sales revenue, not an internal transfer.",
+    "verdict": "doubt"
   },
   "871ac09f9ae3dd275b6f79425467495f26bf468877aec4bce4f5d895a5e9db01": {
     "business_personal": "business",
@@ -6537,6 +7653,18 @@
     "reason": "Wholesale supply purchase is an ordinary business expense; no listed group applies.",
     "verdict": "agree"
   },
+  "88ff2e7630d0d39e1bb47effc91b49468629d927dcd1b7516ed430fdc923d158": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a processor sales payout credit, not a movement between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "89067ccff264c011d50797d0a4da4c79c757fbf34bc1885c6d086b14f79ed03d": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -6655,6 +7783,18 @@
     "group": null,
     "reason": "Stripe payout is ordinary payment-processor sales revenue, not an internal transfer.",
     "verdict": "doubt"
+  },
+  "8b1e29b150640fe822736e3b217e04f67c03447bb026bd650f76f8befcf2b367": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.82,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.84,
+      "group_fit": 0.94
+    },
+    "group": null,
+    "reason": "Incoming Square (SQ) payment is consistent with processor sales revenue, not a one-off refund.",
+    "verdict": "agree"
   },
   "8b2f4b79a4dff5af40b3070865e0956e3956ddc0f8fb9e4253509a259bb94c00": {
     "business_personal": "business",
@@ -6810,6 +7950,18 @@
     "reason": "Daily remittance to Fora indicates repayment of a business cash advance.",
     "verdict": "agree"
   },
+  "8e867a3fdc0a6fb4e94daceaa8a3fcd9f9e65284370aeacff575c1c240995b71": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.9,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.8,
+      "group_fit": 0.85
+    },
+    "group": null,
+    "reason": "Shopify credit appears to be a processor payout; no Shopify Capital or advance-remittance evidence.",
+    "verdict": "agree"
+  },
   "8e9b494612e54865af4c057c861435e194e3f179cf27c5434b667fafd300566e": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -6922,6 +8074,18 @@
     "reason": "Commercial rent is an ordinary business expense; no listed group applies.",
     "verdict": "agree"
   },
+  "912160dd5b90a73efd409d750fd7a3a9b9854147115c882517d5d657b9e5d872": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer credit is a processor sales payout, not a movement between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "912c3dc9067cb999a297fff30b911157b0111f5434826772cbd3d65f7e526147": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -6991,6 +8155,18 @@
     "group": null,
     "reason": "Shopify payment-processor credit is ordinary business sales revenue; no group applies.",
     "verdict": "agree"
+  },
+  "926cec1727c8ebb4426ce34b78f45859b49bedc37e6a67c2f11960576f257196": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 1.0
+    },
+    "group": null,
+    "reason": "Stripe transfer is a processor sales payout, not a movement between owned accounts.",
+    "verdict": "doubt"
   },
   "929d25a27c8578cef85b85a4bada75649bf3cea8dbd12fc60b998bfa32e68ecb": {
     "business_personal": "business",
@@ -7076,6 +8252,18 @@
     "reason": "Shopify payment is a business sales payout; processor credits are revenue and carry no group.",
     "verdict": "agree"
   },
+  "93b0f48c616f9863408e0fbce31cb65d28e29e69336a959ea6a10defbb49273b": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.8,
+      "direction_consistency": 0.9,
+      "evidence_strength": 0.72,
+      "group_fit": 0.82
+    },
+    "group": "Not average monthly revenue",
+    "reason": "Credit from SQ Midtown Auto appears to be a merchant refund, not recurring operating revenue.",
+    "verdict": "doubt"
+  },
   "93b10c506d22f08ba1e02356d3dad66ea914a1e44c3a8e9c47d98fa0c244fc20": {
     "business_personal": "personal",
     "confidence": 0.99,
@@ -7089,6 +8277,18 @@
     "group": "Internal transfer",
     "reason": "Transfer to savings indicates movement between the business\u2019s own accounts.",
     "verdict": "agree"
+  },
+  "93bc272910abbfa70c6311f502160e63703ecc4dbc7a52cef00d1298016b9904": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a sales payout credit, not a movement between the business's own accounts.",
+    "verdict": "doubt"
   },
   "93ec60d713fdb14a400b863de3d3e57c4e34c28bd6c8f8d43e1d2a95a583a9fc": {
     "business_personal": "business",
@@ -7181,6 +8381,18 @@
     "reason": "Gusto payroll is a routine business payroll debit; no listed risk group applies.",
     "verdict": "agree"
   },
+  "95bc588188653c9d5295fe1f14fade3455ceafb068ae6e707a75c127d637c62e": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe credit is a payment-processor sales payout, not a transfer between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "95d56c925e52011026406433c53bf9ebb403bde4b90ff87fcbb975cfe2bbb286": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -7201,6 +8413,30 @@
     "group": null,
     "reason": "Square payment-processor credit is ordinary business sales revenue, not a special group.",
     "verdict": "agree"
+  },
+  "96394598457075cf4d2bb49156463a762cf5e9d7b3e0896ae24a631652eb80ea": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.96,
+      "group_fit": 0.98
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout, not a movement between the business's own accounts.",
+    "verdict": "doubt"
+  },
+  "96528ae827f946605d15ee0b78466ca2b7fa8de6b9d0b13d685fd509193b8cb5": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe credit is a payment-processor sales payout, not a transfer between owned accounts.",
+    "verdict": "doubt"
   },
   "9654deb915c774e72223ac6eea227f3917a3f073050284ffb1b979b357249ade": {
     "business_personal": "business",
@@ -7306,6 +8542,18 @@
     "group": null,
     "reason": "Venmo payment to a friend is a personal outgoing transfer; no listed group applies.",
     "verdict": "agree"
+  },
+  "983dcda2c0c199165d51392c1b0d41e8ffee958e9f705ab70a93fcb5bd8c36fc": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe credit is a payment-processor sales payout, not a transfer between owned accounts.",
+    "verdict": "doubt"
   },
   "986cef167f0ed5d2c0d2832a57a65d78f9ff85888b5cef57176b336cb6aa1856": {
     "business_personal": "business",
@@ -7454,6 +8702,18 @@
     "reason": "Commercial rent is an ordinary business operating expense; no specified group applies.",
     "verdict": "agree"
   },
+  "9aa74fd7f9781bedadd1125d12eba8de34639f38077fc9382b201065c90e0cfd": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe credit is payment-processor sales revenue, not a transfer between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "9af42a7585b06bfe8db729bec4acb1090b966a384cd554876aea7de09209d436": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -7536,6 +8796,18 @@
     "confidence": 0.98,
     "group": null,
     "reason": "Gusto payroll is a business operating expense; no listed group applies.",
+    "verdict": "agree"
+  },
+  "9c711c3813e007898b25d2de635f7847978196ac0eafbe87fddcd79dae7185b1": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.78,
+      "direction_consistency": 0.9,
+      "evidence_strength": 0.76,
+      "group_fit": 0.94
+    },
+    "group": null,
+    "reason": "Square credit from Yoga Loft is consistent with processor sales; no special group applies.",
     "verdict": "agree"
   },
   "9c9bd79a27f8043b72e98e7a1d2beb9b50182639bbb7e32d9973875d9378b029": {
@@ -7671,6 +8943,18 @@
     "reason": "Zelle payment to an individual; no listed risk category applies and it appears personal.",
     "verdict": "agree"
   },
+  "9f65e23176207a4f515d6b55fe1de723202e93781946a8afb86704b438d7fac1": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not a transfer between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "9f8e15d787949dfb30554bd907dacfaba079b3ea6ad07d06ef922828d0e9e70f": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -7705,6 +8989,18 @@
     "group": null,
     "reason": "Adobe subscription is an ordinary business expense; no listed risk group applies.",
     "verdict": "agree"
+  },
+  "a024626bba00af5f51489f0cb5a1421ccf2bda8db97621f2e5319b4b1e464426": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.7,
+      "direction_consistency": 1.0,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": "NSFs",
+    "reason": "Returned-item fee is an NSF-related debit fee.",
+    "verdict": "doubt"
   },
   "a062a4b7b8cd7c57fb1e511a82594c963c7aa47db273ef02353f8711a7299892": {
     "business_personal": "personal",
@@ -7832,6 +9128,18 @@
     "reason": "Square Capital is an MCA funder; this credit is an advance disbursement, not sales revenue.",
     "verdict": "doubt"
   },
+  "a258bb778f7a6b481eaca2f034699ed724645e896c0e7a701b9180a6ce82e575": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not an internal transfer; treat as business revenue.",
+    "verdict": "doubt"
+  },
   "a277d205162977df31f1c8d2f01476d94c7077b5024cefc54da930851c020d17": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -7930,6 +9238,18 @@
     "reason": "Wage garnishment levy is a garnishment-related debit.",
     "verdict": "agree"
   },
+  "a4a61f74e41cdcb7f62111aff5a76eff144051fe450bdb7710dd121c224b34c3": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe credit is payment-processor sales revenue, not a transfer between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "a4cdc4fa12ca9a73970c4871c224999c64b5c3c879a7a27a1b1ca5f8c5723a9b": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -7979,6 +9299,18 @@
     "reason": "Small Zelle payment to an individual; no indication of a business expense or a specified risk category.",
     "verdict": "agree"
   },
+  "a581510e42e9a89e09c3a839f311a79496526cd570d11034afaf8130500ad58e": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": "Active advance",
+    "reason": "Square Capital credit is an MCA advance disbursement, not operating sales revenue.",
+    "verdict": "doubt"
+  },
   "a5b18d6393ac27e3ff18db8aad0fe3a109326017a85d8a5d5d6d513839c8bad6": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -8006,6 +9338,18 @@
     "group": null,
     "reason": "Commercial rent is an ordinary business expense; no listed risk group applies.",
     "verdict": "agree"
+  },
+  "a60d47013597d3c93c0fe56c50cfa7e20886c20fbc7a47dfa16e82eae119d4a7": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.95,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is an inbound processor payout, treated as ordinary sales revenue, not an internal transfer.",
+    "verdict": "doubt"
   },
   "a679d3a3d8e213f88d57b832ced7424a1256887d889a29be468946cb5bd579d2": {
     "business_personal": "business",
@@ -8055,6 +9399,18 @@
     "group": null,
     "reason": "Commercial rent is an ordinary business expense; no listed group applies.",
     "verdict": "agree"
+  },
+  "a730750ca7ae5398fce7b78a0113e70bc2fdf84ae6499c5a4ec01100e124c8a5": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not a transfer between owned accounts.",
+    "verdict": "doubt"
   },
   "a7a64c2653e525b17654a121b2c4a8531327ca859cce00c35e9558476536e927": {
     "business_personal": "personal",
@@ -8196,12 +9552,36 @@
     "reason": "Commercial rent is an ordinary business operating expense; no listed group applies.",
     "verdict": "agree"
   },
+  "a9bc107a49cabeb1b7496d32c7d3f6ccb757f1555e2901c4bb272e11f0715a9f": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.96,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer credit is payment-processor sales revenue, not an internal transfer.",
+    "verdict": "doubt"
+  },
   "a9fe2c8a66d2431f2cd494d80c9869a2cd68239955c77b968bd93de7c6580837": {
     "business_personal": "business",
     "confidence": 0.98,
     "group": null,
     "reason": "Stripe payout is ordinary payment-processor sales revenue, not an internal transfer.",
     "verdict": "doubt"
+  },
+  "aa09b6450c57f52271808c8bc318ee699c7c395e6b16e694f527a8a34a0f74fc": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.72,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.83,
+      "group_fit": 0.93
+    },
+    "group": null,
+    "reason": "SQ credit is consistent with Square-processed sales for Green Grocer, not a grocery purchase.",
+    "verdict": "agree"
   },
   "aa28c3342d9025c260f9f3e359ab757cfcd3b32ba3e502810ab36abdae49e6fd": {
     "business_personal": "business",
@@ -8392,6 +9772,18 @@
     "reason": "Stripe payment-processor credit is ordinary business sales revenue; no group applies.",
     "verdict": "agree"
   },
+  "ada479b8fa59231a315ea31115f1145f75a9159f69ec0a5e6ab81d4f2aeb69c2": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.94,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.95,
+      "group_fit": 0.98
+    },
+    "group": null,
+    "reason": "Stripe credit is a payment-processor sales payout, not a transfer between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "adb4200552117611aeadec61dea82f08347799ea3b49e6ada05edfcbc9bb8028": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -8489,6 +9881,18 @@
     "group": null,
     "reason": "Stripe payment-processor credit is ordinary business sales revenue; no group applies.",
     "verdict": "agree"
+  },
+  "af98e9f9b9d21451c57de239cbd9578049bf983f19e44448fff9e259d3edb481": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.94,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.95,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe credit is payment-processor sales revenue, not a transfer between the business's own accounts.",
+    "verdict": "doubt"
   },
   "b06516ca243136082c3fd1f86c5e15dc907c4b38a676bc30862a27ca265c4201": {
     "business_personal": "business",
@@ -8784,6 +10188,18 @@
     "reason": "Venmo payment to a friend is a personal outgoing transfer; no listed group applies.",
     "verdict": "agree"
   },
+  "b5fc97bc23e5b518c6aff492fa55fb452f4c66c35a5d07411dc17e9e2cc12204": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 1.0,
+      "evidence_strength": 0.99,
+      "group_fit": 1.0
+    },
+    "group": "Overdraft",
+    "reason": "Explicit overdraft fee debit; classify as Overdraft.",
+    "verdict": "doubt"
+  },
   "b612bdc844b0c608bca36a2c87a46d7056522be4ecbefe3442dc3a0832d5ec45": {
     "business_personal": "business",
     "confidence": 0.96,
@@ -8966,6 +10382,18 @@
     "reason": "Square payment-processor credit is ordinary business sales revenue, not a special group.",
     "verdict": "agree"
   },
+  "b9bafb60681e6d27cb694175a38b853d172b08e426d6e2181a9ad58f13e63340": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.88,
+      "group_fit": 0.9
+    },
+    "group": null,
+    "reason": "Incoming Shopify transfer is consistent with a sales payout, not a Shopify Capital repayment.",
+    "verdict": "agree"
+  },
   "b9bf3cc3c5504d76319ba86c7e69b66b5ad43012d62df182196fc0e15494e693": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -9013,6 +10441,30 @@
     "confidence": 0.96,
     "group": null,
     "reason": "Wholesale supply purchase is an ordinary business expense; no listed risk group applies.",
+    "verdict": "agree"
+  },
+  "bb4429aff143129f4fddc8bc130c9ee13904888f2612cffad0c0fb66715565fa": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.82,
+      "direction_consistency": 0.9,
+      "evidence_strength": 0.74,
+      "group_fit": 0.78
+    },
+    "group": "Not average monthly revenue",
+    "reason": "Square merchant credit from Bella Salon likely a refund, not recurring operating revenue.",
+    "verdict": "doubt"
+  },
+  "bb9137c506ca9611c980c258e675d7ce60eb36dd9375af571ee4b6d1d9fc8c32": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.72,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.78,
+      "group_fit": 0.88
+    },
+    "group": null,
+    "reason": "Inbound SQ credit is consistent with Square-processed sales; no evidence it is a refund or one-off credit.",
     "verdict": "agree"
   },
   "bb967081c67f2cd5ddbb1b8a6e1b64ee607104d9b4f7b5f67aac5e81b2538fae": {
@@ -9155,6 +10607,18 @@
     "reason": "Clover payment-processor deposit is a business sales credit and counts as revenue.",
     "verdict": "agree"
   },
+  "bd6984ac66a39cada5a09091af30b6a3034f16afd0131b5a59281c0097692df5": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a processor payout/sales credit, not a movement between the business\u2019s own accounts.",
+    "verdict": "doubt"
+  },
   "bd9c6cc60db636c9915efd993b30c89835b4600a706652d324bcff252dc35f27": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -9168,6 +10632,18 @@
     "group": null,
     "reason": "Clover payment-processor credit is ordinary business sales revenue, not a special group.",
     "verdict": "agree"
+  },
+  "bdc0857f705fe2d397891f43f2ed5e8be4000189931d959029a70a6c0d45e370": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout, not a movement between the business's own accounts.",
+    "verdict": "doubt"
   },
   "bdc69b9493ff1803f0b63bc50caf823ca9384fe98f2ffdcf1fae15f438e485a8": {
     "business_personal": "personal",
@@ -9225,12 +10701,36 @@
     "reason": "Utility payment is an ordinary business operating expense; no listed group applies.",
     "verdict": "agree"
   },
+  "beced2b5cac746932ef9cdb6aed3acc81ec2e5c45d8f16a933da8311e604f7fb": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.8,
+      "direction_consistency": 0.9,
+      "evidence_strength": 0.72,
+      "group_fit": 0.8
+    },
+    "group": null,
+    "reason": "Credit from Shopify is consistent with a merchant payout; no Shopify Capital or advance-remittance indicator.",
+    "verdict": "agree"
+  },
   "bee4a31ffe8b40a440ba17b5ce263335e4c869640460bebab694ac5223d8702e": {
     "business_personal": "business",
     "confidence": 0.98,
     "group": null,
     "reason": "Utility bill is an ordinary business operating expense; no listed group applies.",
     "verdict": "agree"
+  },
+  "befdc20a3fc84be1d97fbd893111ea4ae69fd977309c26c605fc9a736673fee6": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout credit, not a transfer between owned accounts.",
+    "verdict": "doubt"
   },
   "bf1c9d1e1fc2310cdfa92bd15e0a08ac904e9d86cb9fe801d7c5901b0acf6225": {
     "business_personal": "business",
@@ -9335,6 +10835,18 @@
     "confidence": 0.98,
     "group": null,
     "reason": "Stripe payout is ordinary payment-processor sales revenue, not an internal transfer.",
+    "verdict": "doubt"
+  },
+  "c19c0b1387ffb7131e863a544db5dbd36f67efcb1f34bf58cae8618d3a0562ad": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not a transfer between the business's own accounts.",
     "verdict": "doubt"
   },
   "c1fbc07a8c3a99bac3864334c9c90252a34acfc87042a90ec1dfdd8409ddd745": {
@@ -9484,6 +10996,18 @@
     "reason": "Transfer to savings indicates movement between the business's own accounts.",
     "verdict": "agree"
   },
+  "c43215725d741fcba21dbecba4669329bafcba24c2f9443672eac32b3ba5500b": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": "Active advance",
+    "reason": "Square Capital credit is an MCA advance disbursement, not operating sales revenue.",
+    "verdict": "doubt"
+  },
   "c43c72d75d63e4b91a53b47868a1ac6af8a0b9620473df3b3bf8b8dd00b62577": {
     "business_personal": "business",
     "confidence": 0.97,
@@ -9519,11 +11043,35 @@
     "reason": "Square payment-processor credit is ordinary business sales revenue, not an advance.",
     "verdict": "agree"
   },
+  "c54c58e4c6f64570112398cf1867a777e357f7936fb1eee0ee5bad8a0e7855a4": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not an internal transfer.",
+    "verdict": "doubt"
+  },
   "c5608c6705f3dfa2314e0c96d18fa9f53417fd4d123eb5fccf92688390bfbb52": {
     "business_personal": "business",
     "confidence": 0.99,
     "group": null,
     "reason": "Shopify credit is a payment-processor payout and ordinary business revenue.",
+    "verdict": "agree"
+  },
+  "c583f5732ee0469785516fec3037fdf21282323620f3a51c9b4c575809bf7280": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.93,
+      "group_fit": 0.98
+    },
+    "group": null,
+    "reason": "Square deposit to a print shop is consistent with payment-processor sales; no Square Capital advance wording.",
     "verdict": "agree"
   },
   "c585ab977c067d0f45f464c4f1475105f8d23a46d0a42719a5011543ed737124": {
@@ -9652,6 +11200,30 @@
     "reason": "Utility bill is an ordinary business operating expense; no listed group applies.",
     "verdict": "agree"
   },
+  "c7e7d2f06d462b5712890200b1c2a048a913599bee7cd088ed1fef1470817dd7": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": "Active advance",
+    "reason": "Square Capital credit is an MCA advance disbursement, not operating sales revenue.",
+    "verdict": "doubt"
+  },
+  "c7e8a37bff7ab7da5c7a00403d21e1fe87eb9cddc997386d8c4db790f29c6152": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not a movement between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "c7fd72c47f4d73c9440283f0a3f12e6425f48434bddccd37fece5696519c3c10": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -9736,6 +11308,18 @@
     "reason": "Zelle payment to an individual; no listed risk category applies and it appears personal.",
     "verdict": "agree"
   },
+  "ca4b729e1df7e660cfb813a1487cc3a809da4219d498c99d20792fd85cff5046": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.96,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not an internal transfer.",
+    "verdict": "doubt"
+  },
   "ca5f55a33dbee1ad9680df91416c0b13760b5b953c701570ce72eb233ed7cec4": {
     "business_personal": "business",
     "confidence": 0.91,
@@ -9756,6 +11340,30 @@
     "group": "Internal transfer",
     "reason": "Transfer to savings indicates movement between the business's own accounts.",
     "verdict": "agree"
+  },
+  "ca6eac9d9916e12f0b915c99cb4fbfe2d0dfccd92463a4ed04213a079ac9532b": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer credit is payment-processor sales revenue, not a movement between owned accounts.",
+    "verdict": "doubt"
+  },
+  "ca859c1bb9e6b686e9a4f3cea29449b25f48d87886683c638f8395e7509695d3": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": "Active advance",
+    "reason": "Square Capital credit is an MCA advance disbursement, not operating sales revenue.",
+    "verdict": "doubt"
   },
   "caba150aa0143b5b2cc00fdfe27b0943c1fcec171aac762686a2b05c84c7bbb3": {
     "business_personal": "business",
@@ -9797,6 +11405,18 @@
     "confidence": 0.91,
     "group": null,
     "reason": "Wholesale invoice credit appears to be ordinary recurring business sales revenue.",
+    "verdict": "agree"
+  },
+  "cb4f506b23a9d02b67738646b0a21e7b242039937eb827e56380d2a47324260a": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.9,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.85,
+      "group_fit": 0.9
+    },
+    "group": null,
+    "reason": "SQ Green Grocer credit is consistent with a Square-processed business sale; no refund indicator.",
     "verdict": "agree"
   },
   "cb58cdac3793b3c3eb8cd84234fdd7f9a3be76c23e40251c17772a1948e6c727": {
@@ -9988,6 +11608,18 @@
     "reason": "Transfer to savings is a movement between the business's own accounts.",
     "verdict": "agree"
   },
+  "cf6bbda2dba66ff9a7ec989445845726d08ea6a470209bf67fe78b4b324127fa": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.92,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.94,
+      "group_fit": 0.98
+    },
+    "group": null,
+    "reason": "SQ credit from Print Shop is ordinary payment-processor sales revenue; no group applies.",
+    "verdict": "agree"
+  },
   "cfb360a3e911ff08498c8147e4e903cd822f1897abc72c6ed894490cd69dee91": {
     "business_personal": "business",
     "confidence": 0.94,
@@ -10030,6 +11662,18 @@
     "reason": "Stripe payment-processor credit is ordinary business sales revenue; no group applies.",
     "verdict": "agree"
   },
+  "d044137bd80898e632e29fa7dbf7d1010dadc98df93c3d5c2232b94345bd0c3a": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.78,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.88,
+      "group_fit": 0.96
+    },
+    "group": null,
+    "reason": "SQ credit is consistent with Square-processed sales revenue, not a salon purchase expense.",
+    "verdict": "agree"
+  },
   "d069fa07abb2f21ecb5fbe00edbfe71c3cc49b11678d808c78c536f1fa31c52e": {
     "business_personal": "business",
     "confidence": 0.94,
@@ -10058,6 +11702,30 @@
     "reason": "SQ *BELLA SALON appears to be a salon purchase, a personal expense rather than business activity.",
     "verdict": "doubt"
   },
+  "d0b9a1f3ab8d4c0a7c47ce0d8f0c2976ad8da99bcde002e00389bacb826c49ad": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.86,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.9,
+      "group_fit": 0.96
+    },
+    "group": null,
+    "reason": "Credit from Square merchant descriptor is consistent with payment-processor sales revenue, not a grocery purchase.",
+    "verdict": "agree"
+  },
+  "d0cb8316187ccc763d80b53236f12b2f7c77316f4ddca2816232c82e7ae9ceee": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout, not a movement between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "d0d66a2412f38aedf253fc9ce78173941f288d1295a6ef40f7ca6a0253571c1e": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -10078,6 +11746,18 @@
     "group": "Active advance",
     "reason": "Kabbage daily remittance is a payment to a cash-advance funder.",
     "verdict": "agree"
+  },
+  "d17855c21bab82e4a9242ba3682b81e8452ccdc7a320132624fe999ef34124d6": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not a movement between the business's own accounts.",
+    "verdict": "doubt"
   },
   "d17d3cbb5ec440d5ad1e3591ac10505dff0f3728664d16577c9a81271a5f2acf": {
     "business_personal": "business",
@@ -10114,6 +11794,18 @@
     "reason": "Square deposit is a payment-processor payout and ordinary business revenue.",
     "verdict": "agree"
   },
+  "d2c19000027b1d3b3676b67c5b483284e6a0576f3386bd01d4ad484a7176b0ad": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.91,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.93,
+      "group_fit": 1.0
+    },
+    "group": null,
+    "reason": "SQ credit from PRINT SHOP is ordinary payment-processor sales revenue; no group applies.",
+    "verdict": "agree"
+  },
   "d319d6774cd222d598f289248c0c6b6757c8b63494d20807d48d485e318b122b": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -10134,6 +11826,18 @@
     "group": null,
     "reason": "Netflix subscription is a personal entertainment expense; no specified risk group applies.",
     "verdict": "agree"
+  },
+  "d3c4dd9c03e8b988638d42282cb0c8c3ebb2be23e9154cab6e20e545da7375bc": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.97,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer credit is payment-processor sales revenue, not a transfer between own accounts.",
+    "verdict": "doubt"
   },
   "d3e62e4992f3e03b4d83e7536cc397ce8554bf26a9fd65f4ce207d56c47e9c5b": {
     "business_personal": "business",
@@ -10275,6 +11979,18 @@
     "reason": "A large SQ credit is likely a refund or other one-off credit, not recurring processor sales.",
     "verdict": "doubt"
   },
+  "d6ea1f8b077b73993513ed16f08d15f5175d2a22433a0b7d77b1c87919dab037": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.97,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not an internal transfer.",
+    "verdict": "doubt"
+  },
   "d6fe997450be69b58d1badeccc87094ecf96af61233d129915167ad98eb515d6": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -10387,6 +12103,18 @@
     "reason": "Clover payment-processor deposit is ordinary business sales revenue, not a special group.",
     "verdict": "agree"
   },
+  "d90a63eab1a9c643759be33a103c8a73c24ef0dc4a51cd938608d2586fa15cc8": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout, not a movement between owned accounts.",
+    "verdict": "doubt"
+  },
   "d923c6a67044766ca685e16a5120c24defa1162804fe2c1f68718cad314a04fa": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -10400,6 +12128,18 @@
     "group": null,
     "reason": "Wholesale supply purchase is an ordinary business expense; no listed group applies.",
     "verdict": "agree"
+  },
+  "d928c75edba9756e4b2909363813c7121dc5a60fe50cc94708469332dbb63df7": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not a transfer between the business's own accounts.",
+    "verdict": "doubt"
   },
   "d9436f8a1d4d999d998ebcba46acd51584e85f265335424c1309024cd2894f8c": {
     "business_personal": "personal",
@@ -10590,6 +12330,18 @@
     "reason": "SQ *YOGA LOFT appears to be a one-off credit/refund, not recurring payment-processor sales.",
     "verdict": "doubt"
   },
+  "dcf6d6e9bdc708c6a5db0b4957d60ae29387b1f9f1ae9ddf476bdf782222dc93": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not a transfer between owned accounts.",
+    "verdict": "doubt"
+  },
   "dd21de6904ac930e8598c8cd04b1144d3409bb7bc05dd76f9d146141b173b4ed": {
     "business_personal": "personal",
     "confidence": 0.98,
@@ -10695,6 +12447,18 @@
     "reason": "Daily remittance to Fora is a payment to a cash-advance funder.",
     "verdict": "agree"
   },
+  "e01311d86fc7390a3fbaa1b39abe7b84003d80acb0e62e67ef0075d9e178b751": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a processor sales payout credit, not a movement between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "e014a65b2fdef15f8e2aa2d7b3671f1c02a8ebb51c295f196246a7cfa9cb69d2": {
     "business_personal": "business",
     "confidence": 0.96,
@@ -10729,6 +12493,18 @@
     "group": null,
     "reason": "Netflix subscription is a personal entertainment expense; no specified risk group applies.",
     "verdict": "agree"
+  },
+  "e134fe162b96e34960fefc8f24baa4803b9ed5aab79073a425984533c42dc0c1": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe credit is a processor sales payout, not a transfer between owned accounts.",
+    "verdict": "doubt"
   },
   "e15c2c80869fff2fb865fb3037a05ce738f351b93caf7eb7b0f54ee827326989": {
     "business_personal": "business",
@@ -10772,6 +12548,18 @@
     "reason": "Shopify payment is a business sales payout; ordinary processor revenue has no group.",
     "verdict": "agree"
   },
+  "e1bdcca7ce0cf713d6794150a7d541eb91be2b262a4e258fc59114eb46d9748c": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.86,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.87,
+      "group_fit": 0.9
+    },
+    "group": null,
+    "reason": "SQ*CITY BAKERY is a Square-processed sales credit; ordinary processor revenue, not a one-off refund.",
+    "verdict": "agree"
+  },
   "e1dd9fa410de0c8c1c68888d36c19b5e91cdd14480d7ecb1fa78f116637beddd": {
     "business_personal": "business",
     "confidence": 0.96,
@@ -10806,6 +12594,18 @@
     "group": null,
     "reason": "Gusto payroll is a business operating expense; no listed risk group applies.",
     "verdict": "agree"
+  },
+  "e2691b220748b0ef683da38fd5242b2b322e13d4404425548e09852f4bb670a1": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer credit is a payment-processor sales payout, not a transfer between own accounts.",
+    "verdict": "doubt"
   },
   "e28c8dff54b28672a42520a0930d4e24ad53b58cc1999dc76bee1b7f446e303b": {
     "business_personal": "business",
@@ -10933,6 +12733,18 @@
     "reason": "Square payment-processor credit is ordinary business sales revenue, not an advance.",
     "verdict": "agree"
   },
+  "e4d5e8abd16709ddb3b7c7c1efcd9ef8999980afeb91d46f4ff3a5ea488e4c49": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.96,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe credit is a payment-processor sales payout, not a transfer between owned accounts.",
+    "verdict": "doubt"
+  },
   "e500ff9efe2368459c68e905a310f96d6a7ec041735ee1693b318d935d9ec214": {
     "business_personal": "business",
     "confidence": 0.96,
@@ -10966,6 +12778,18 @@
     "confidence": 0.98,
     "group": null,
     "reason": "Shopify payment is a business sales payout; ordinary processor revenue has no group.",
+    "verdict": "agree"
+  },
+  "e53048dc3e0073a284599ea000445bf277981977b8a7c528bfe628af997850a1": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.86,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.82,
+      "group_fit": 0.9
+    },
+    "group": null,
+    "reason": "SQ indicates a Square payment-processor sales credit; no evidence it is a refund or other non-revenue item.",
     "verdict": "agree"
   },
   "e5556b9b218ab94976bc090b7b406d5945db4d00663d9d0630bb513175074b2a": {
@@ -11143,6 +12967,18 @@
     "reason": "Square deposit is a payment-processor sales payout, treated as business revenue with no group.",
     "verdict": "agree"
   },
+  "e80001fcd6c09db260ffd36ea2fec42232b68ee1007f76fde48950067be628b0": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a business payment-processor sales credit, not an internal account transfer.",
+    "verdict": "doubt"
+  },
   "e80b6b0baabe3a4f7337f4f3a8c5e7dd00ca38e33dc7367d67ba1dc9e78a8f25": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -11163,6 +12999,18 @@
     "group": null,
     "reason": "Adobe subscription is an ordinary business expense; no listed group applies.",
     "verdict": "agree"
+  },
+  "e846e600e6b6cc101e7d4bcddce57b8521bb3cc04c04d822ae79721d4dea05f4": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.94,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.96,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a processor payout credit and business revenue, not an internal account transfer.",
+    "verdict": "doubt"
   },
   "e85427b34d0b3720937b631d2e244dbec8f5a071f4e0ddda14553584e086ef3d": {
     "business_personal": "business",
@@ -11220,6 +13068,18 @@
     "reason": "Stripe payment-processor credit is ordinary business sales revenue, not an internal transfer.",
     "verdict": "doubt"
   },
+  "e8f3de8776941d13bee26f094b2e9d2835261be524e76452264054aeb827ff99": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.82,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.86,
+      "group_fit": 0.96
+    },
+    "group": null,
+    "reason": "Square credit is consistent with payment-processor sales; no evidence it is a one-off non-revenue credit.",
+    "verdict": "agree"
+  },
   "e938a274f4b30ee053b380dc633f7e2bddacc971f3dc46aee82db9db5b9116b1": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -11254,6 +13114,18 @@
     "group": null,
     "reason": "Adobe subscription is a routine business software expense; no listed risk group applies.",
     "verdict": "agree"
+  },
+  "e9de23441e5f37e134c23c3b67d7df6e25ef327974dec6504fbc6bb733c9d055": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.96,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a sales payout credit, not a movement between the business's own accounts.",
+    "verdict": "doubt"
   },
   "e9e90f9417bcc54037da03edae842ba1790e67c7f0f3c2008197c8faf401d8c1": {
     "business_personal": "business",
@@ -11297,6 +13169,18 @@
     "reason": "Clover payment-processor credit is ordinary business sales revenue; no group applies.",
     "verdict": "agree"
   },
+  "eae4d2c57442856166cbe8c20fd1bce6419d238858f1f53136ae79b403a7b109": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.96,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe payout is a payment-processor sales credit, not an internal transfer.",
+    "verdict": "doubt"
+  },
   "eaf193b55b6d96f8ac33510c2eed758a6249ebf73091719df1cfdd30aa6b98fd": {
     "business_personal": "business",
     "confidence": 0.98,
@@ -11331,6 +13215,18 @@
     "group": null,
     "reason": "Gusto payroll is a business payroll debit; no listed group applies.",
     "verdict": "agree"
+  },
+  "eb9c22e29c604b6ad3012ce9decef1d07b1c182e86b25691b1fc3b5c82528350": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.96,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout, not a transfer between the business's own accounts.",
+    "verdict": "doubt"
   },
   "ebcc6044bfad021d9099ba389523e93e3e6ccf01a71ee5b9752d319b9313203d": {
     "business_personal": "business",
@@ -11493,11 +13389,35 @@
     "reason": "SQ payment-processor credit is ordinary business sales revenue; no special group applies.",
     "verdict": "agree"
   },
+  "ef5d3273a3d031fa983b2e38834ca9212255914ca8969eb310b591ba32bd88fc": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.94,
+      "group_fit": 0.98
+    },
+    "group": null,
+    "reason": "Stripe transfer is a sales payout credit, not a movement between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "ef9964715a4dc8a9a548d2410660a067273737b4654709c973dbadc3dd0c4304": {
     "business_personal": "business",
     "confidence": 0.98,
     "group": null,
     "reason": "Gusto payroll is a business payroll debit; no listed group applies.",
+    "verdict": "agree"
+  },
+  "efb8407c6ed38eac56315e16d9034302a8e0ad64b9c9241167c2ec727bf1b7b7": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.82,
+      "direction_consistency": 1,
+      "evidence_strength": 0.9,
+      "group_fit": 0.98
+    },
+    "group": null,
+    "reason": "SQ credit is consistent with Square payment-processor sales revenue; size alone does not make it non-revenue.",
     "verdict": "agree"
   },
   "efe90fbb8ce12248324208bd8c6304cab324e671a6064354a99a82a1a1616282": {
@@ -11605,6 +13525,18 @@
     "reason": "Wholesale supply purchase is an ordinary business expense; no listed risk group applies.",
     "verdict": "agree"
   },
+  "f1cad7f3fa18f6369b17c5a84bf501f21ba4e93eca730aed2f4c42a7968d49b4": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.82,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.72,
+      "group_fit": 0.9
+    },
+    "group": null,
+    "reason": "Credit from SQ *YOGA LOFT is likely Square-processed business revenue; no special group applies.",
+    "verdict": "agree"
+  },
   "f1d261d10891c606926f62cb94ec5d393572248549ced34d7996cc945567c234": {
     "business_personal": "personal",
     "confidence": 0.99,
@@ -11633,12 +13565,36 @@
     "reason": "Wholesale supply purchase is an ordinary business expense; no listed group applies.",
     "verdict": "agree"
   },
+  "f24b4e5b51248f1fc0931e55652f246a7bd4cf9c7d41aa54bd4395f758e148cb": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.95,
+      "group_fit": 0.98
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales payout, not a movement between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "f2671bc3c78ab71cf12fd2e05dc966dcb7c01d4f1939a5f236d45eab3633dec2": {
     "business_personal": "business",
     "confidence": 0.98,
     "group": null,
     "reason": "SQ payment-processor credit is ordinary business sales revenue; no special group applies.",
     "verdict": "agree"
+  },
+  "f2681b5b595893bc17b6b04ad3a93b2f297fe9424a9d9503ebc2152275109b74": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.97,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": "Active advance",
+    "reason": "Square Capital credit is an MCA advance disbursement, not operating sales revenue.",
+    "verdict": "doubt"
   },
   "f269bcad72adcbe17e996fba746c85c1a804236bab200bc907d3a7561958ccd2": {
     "business_personal": "business",
@@ -11695,6 +13651,18 @@
     "group": null,
     "reason": "Gusto payroll debit is an ordinary business operating expense; no listed group applies.",
     "verdict": "agree"
+  },
+  "f3e177d4c7d73ede525f4f406be24036dbc94490b2fcf56514145cafe1c13445": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.98,
+      "direction_consistency": 0.99,
+      "evidence_strength": 0.98,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a payment-processor sales credit, not a transfer between the business's own accounts.",
+    "verdict": "doubt"
   },
   "f3e275eed1bf713628076178fe94e6c44996a758f7c82c67b21cfeee91bccde6": {
     "business_personal": "business",
@@ -11787,6 +13755,18 @@
     "reason": "Clover is a payment processor; its business sales payout is revenue and has no group.",
     "verdict": "agree"
   },
+  "f65a5b77569ef2b249d9e45b72df793b5b4d4b9d91a7b8751dec724d4d4655ff": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.95,
+      "group_fit": 0.98
+    },
+    "group": null,
+    "reason": "Stripe credit is a processor payout for sales, not a transfer between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "f66213e429660460888b9910453b04855f891dd39896d44127d9f8ace374bea2": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -11876,6 +13856,18 @@
     "confidence": 0.98,
     "group": null,
     "reason": "Shopify payment is a business sales payout; ordinary processor revenue has no group.",
+    "verdict": "agree"
+  },
+  "f89dc0b31322af1b26dbc1a35b17a92aeea0c5975e220933e40d945911d4dd8e": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.9,
+      "direction_consistency": 0.9,
+      "evidence_strength": 0.75,
+      "group_fit": 0.8
+    },
+    "group": null,
+    "reason": "Shopify credit labeled TRANSFER lacks Shopify Capital/remittance evidence; treat as ordinary business revenue.",
     "verdict": "agree"
   },
   "f8cdba9499cba37c4f254b6b6f8c65156d131e25bb0515b7997c186c6edc8c4b": {
@@ -12025,6 +14017,18 @@
     "reason": "Commercial rent payment is an ordinary business expense; no listed group applies.",
     "verdict": "agree"
   },
+  "fb987363aebd1fe26c40be246b83006f1a0bfb80b4dedf9ce79ef604e3382ee6": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.95,
+      "evidence_strength": 0.95,
+      "group_fit": 0.98
+    },
+    "group": null,
+    "reason": "Stripe credit is payment-processor sales revenue, not a transfer between the business's own accounts.",
+    "verdict": "doubt"
+  },
   "fcb9e420f3701d29136509076d1c088b56c5a72160036779752db76fdc0f6600": {
     "business_personal": "business",
     "confidence": 0.99,
@@ -12123,12 +14127,36 @@
     "reason": "Commercial rent is an ordinary business expense; no listed group applies.",
     "verdict": "agree"
   },
+  "fe50b87cc4f14e5514c7ff8582c06faceab0ddd76765b47274d3f9eac1ffe7d1": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.95,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.96,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe credit is a payment-processor sales payout, not a transfer between owned accounts.",
+    "verdict": "doubt"
+  },
   "fe58a5d3fd5089df04f1d3ae3b6133bb8b0e69b797edf8eba3d521e16d58032c": {
     "business_personal": "business",
     "confidence": 0.99,
     "group": "Not average monthly revenue",
     "reason": "IRS tax refund credit is a one-off, non-operating business deposit, not recurring sales revenue.",
     "verdict": "agree"
+  },
+  "fe64327d5e574c45c95b15021ea41cb0cc93ad66a58bf6c9677f369220042a97": {
+    "business_personal": "business",
+    "criteria": {
+      "counterparty_clarity": 0.96,
+      "direction_consistency": 0.98,
+      "evidence_strength": 0.97,
+      "group_fit": 0.99
+    },
+    "group": null,
+    "reason": "Stripe transfer is a processor sales payout credit, not a movement between owned accounts.",
+    "verdict": "doubt"
   },
   "fe96bf7185a039c1ff8786396b45cac2cac1739bfecad6faa7cc6f18f85ea511": {
     "business_personal": "business",

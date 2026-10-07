@@ -1,9 +1,9 @@
-# Fundo AI Engineer Challenge — Baseline (v1)
+# Fundo AI Engineer Challenge — v2
 
-An LLM **reviewer** of an imperfect keyword transaction-labeling engine. The
-reviewer reads each transaction and the engine's label, flags the ones it
-doubts, proposes a correction, and we measure what those corrections are worth
-to a funding decision.
+A two-stage LLM **reviewer** of an imperfect keyword transaction-labeling engine.
+GPT-6 Luna triages every transaction and flags the doubtful ones; GPT-5.6 Terra
+then adjudicates only that flagged subset. We measure what the corrections are
+worth to a funding decision.
 
 See `docs/specs.md` for the requirements and the adopted assumptions, and
 `SOLUTION.md` for the writeup.
@@ -11,12 +11,13 @@ See `docs/specs.md` for the requirements and the adopted assumptions, and
 ## Pipeline
 
 ```
-generate_data.py  ->  keyword_engine.py  ->  reviewer.py  ->  features.py  ->  report
-   (truth labels)        (legacy labels)      (corrections)    (offer rule)
+generate_data.py -> keyword_engine.py -> reviewer.py ------------> features.py -> report
+  (truth labels)      (legacy labels)    Luna triage, Terra adj.    (offer rule)
 ```
 
-Every transaction carries three label layers so error is **measured**, not
-claimed: `truth` → `legacy` (engine) → `corrected` (reviewer).
+Every transaction carries four label layers so error is **measured**, not
+claimed: `truth` → `legacy` (engine) → `reviewer` (Luna / v1) → `corrected`
+(Luna+Terra / v2).
 
 ## Setup
 
@@ -24,8 +25,9 @@ claimed: `truth` → `legacy` (engine) → `corrected` (reviewer).
 pip install -r requirements.txt
 ```
 
-Model: **GPT-6 Luna** (`gpt-6-luna`) via the OpenAI API — a cheap,
-high-throughput model that fits a high-volume, simple per-transaction review.
+Models (OpenAI API): **GPT-6 Luna** (`gpt-6-luna`) — cheap, high-throughput — for
+the full triage pass; **GPT-5.6 Terra** (`gpt-5.6-terra`) — stronger reasoning —
+for the small flagged subset only.
 
 ## Run it
 
@@ -54,8 +56,8 @@ clean checkout reproduce the report deterministically. The report is written to
 ```
 src/generate_data.py   seeded synthetic Plaid transactions + ground truth
 src/keyword_engine.py  the 13-group keyword engine (deliberately imperfect)
-src/reviewer.py        one cached GPT-6 Luna call per transaction
-src/cache.py           file cache keyed by sha256(model + prompt)
+src/reviewer.py        two-stage: Luna triage (all) + Terra adjudication (flags)
+src/cache.py           single-file cache keyed by sha256(model + prompt)
 src/features.py        per-business features + offer rule
 src/run.py             orchestrates the pipeline and writes the report
 ```

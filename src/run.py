@@ -1,10 +1,11 @@
-"""End-to-end baseline: generate -> label -> review -> features -> report.
+"""End-to-end: generate -> label -> review (Luna) -> escalate (Terra) ->
+features -> report.
 
     python src/run.py
 
-With cache/llm/ populated it needs no API key and prints the same report every
-time. On a cache miss it needs OPENAI_API_KEY to call GPT-6 Luna once, then
-writes the responses into cache/llm/ for you to commit.
+With cache/llm.json populated it needs no API key and prints the same report
+every time. On a cache miss it needs OPENAI_API_KEY to call the models once,
+then writes the responses into cache/llm.json for you to commit.
 """
 
 import json
@@ -39,22 +40,27 @@ def _money(x):
     return f"${x:,.0f}"
 
 
-def _review_metrics(txns):
-    """Count what the reviewer did, measured against ground truth."""
-    flags = catches = bad_flags = missed = 0
+def _metrics(txns, key):
+    """Count what a label set (txn[key]) did vs ground truth and the engine."""
+    flagged = good = bad = missed = 0
     for t in txns:
-        legacy, truth, rev = t["legacy"], t["truth"], t["reviewer"]
-        engine_correct = legacy["group"] == truth["group"]
-        if rev["verdict"] == "doubt":
-            flags += 1
-            if not engine_correct and rev["group"] == truth["group"]:
-                catches += 1          # fixed a real error
+        legacy, truth, c = t["legacy"], t["truth"], t[key]
+        engine_correct = (legacy["group"] == truth["group"]
+                          and legacy["business_personal"] == truth["business_personal"])
+        changed = (c["group"] != legacy["group"]
+                   or c["business_personal"] != legacy["business_personal"])
+        corrected_right = (c["group"] == truth["group"]
+                           and c["business_personal"] == truth["business_personal"])
+        if changed:
+            flagged += 1
+            if not engine_correct and corrected_right:
+                good += 1          # fixed a real error
             elif engine_correct:
-                bad_flags += 1        # flagged a correct label (wasted time)
+                bad += 1           # changed an already-correct label
         elif not engine_correct:
-            missed += 1               # agreed with a wrong label
-    return {"flags": flags, "good_catches": catches,
-            "bad_flags": bad_flags, "missed_errors": missed}
+            missed += 1            # left a wrong label in place
+    return {"flagged": flagged, "good_catches": good,
+            "bad_flags": bad, "missed_errors": missed}
 
 
 def _revenue_error(feat, truth):
@@ -63,42 +69,38 @@ def _revenue_error(feat, truth):
                for b in truth)
 
 
-def build_report(txns, have_review):
+def build_report(txns, have_v2):
     truth = features.features_for(txns, "truth")
     legacy = features.features_for(txns, "legacy")
-    corrected = features.features_for(txns, "corrected") if have_review else None
+    luna = features.features_for(txns, "reviewer")        # v1: stage 1 only
+    final = features.features_for(txns, "corrected")      # v2: after Terra (== v1 if no stage 2)
 
-    lines = ["# Baseline report", ""]
-    lines.append("Average monthly revenue and offer, per business.\n")
-    header = "| business | AMR truth | AMR legacy | " + ("AMR corrected | " if have_review else "")
-    header += "offer truth | offer legacy | " + ("offer corrected |" if have_review else "")
-    lines.append(header)
-    sep = "|---|---|---|" + ("---|" if have_review else "") + "---|---|" + ("---|" if have_review else "")
-    lines.append(sep)
+    lines = ["# Report (v2: Luna triage + Terra adjudication)", "",
+             "Average monthly revenue and offer, per business.", "",
+             "| business | AMR truth | AMR legacy | AMR v1 | AMR v2 | offer truth | offer legacy | offer v2 |",
+             "|---|---|---|---|---|---|---|---|"]
     for b in sorted(truth):
-        row = f"| {b} | {_money(truth[b]['avg_monthly_revenue'])} | {_money(legacy[b]['avg_monthly_revenue'])} | "
-        if have_review:
-            row += f"{_money(corrected[b]['avg_monthly_revenue'])} | "
-        row += f"{_money(truth[b]['offer'])} | {_money(legacy[b]['offer'])} | "
-        if have_review:
-            row += f"{_money(corrected[b]['offer'])} |"
-        lines.append(row)
+        lines.append(
+            f"| {b} | {_money(truth[b]['avg_monthly_revenue'])} | {_money(legacy[b]['avg_monthly_revenue'])} | "
+            f"{_money(luna[b]['avg_monthly_revenue'])} | {_money(final[b]['avg_monthly_revenue'])} | "
+            f"{_money(truth[b]['offer'])} | {_money(legacy[b]['offer'])} | {_money(final[b]['offer'])} |")
 
-    lines += ["", "## Measured revenue error (sum of |AMR - truth| over businesses)", ""]
-    lines.append(f"- legacy vs truth: {_money(_revenue_error(legacy, truth))}")
-    if have_review:
-        lines.append(f"- corrected vs truth: {_money(_revenue_error(corrected, truth))}")
+    lines += ["", "## Measured revenue error (sum of |AMR - truth| over businesses)", "",
+              f"- legacy vs truth:        {_money(_revenue_error(legacy, truth))}",
+              f"- v1 Luna vs truth:       {_money(_revenue_error(luna, truth))}",
+              f"- v2 Luna+Terra vs truth: {_money(_revenue_error(final, truth))}"
+              + ("" if have_v2 else "   (stage 2 skipped; equals v1)")]
 
-    if have_review:
-        m = _review_metrics(txns)
-        lines += ["", "## Reviewer behavior (vs ground truth)", "",
-                  f"- transactions flagged (doubt): {m['flags']}",
-                  f"- good catches (fixed a real error): {m['good_catches']}",
-                  f"- bad flags (doubted a correct label): {m['bad_flags']}",
-                  f"- missed errors (agreed with a wrong label): {m['missed_errors']}"]
+    m1 = _metrics(txns, "reviewer")
+    lines += ["", "## Reviewer behavior vs ground truth", "",
+              f"- v1 Luna:       flagged {m1['flagged']}, good {m1['good_catches']}, "
+              f"bad {m1['bad_flags']}, missed {m1['missed_errors']}"]
+    if have_v2:
+        m2 = _metrics(txns, "corrected")
+        lines.append(f"- v2 Luna+Terra: flagged {m2['flagged']}, good {m2['good_catches']}, "
+                     f"bad {m2['bad_flags']}, missed {m2['missed_errors']}")
     else:
-        lines += ["", "_Reviewer step skipped: no cache and no OPENAI_API_KEY. "
-                  "Set the key and re-run to populate cache/llm/._"]
+        lines.append("- v2 Luna+Terra: stage 2 skipped (no cache and no OPENAI_API_KEY).")
     return "\n".join(lines) + "\n"
 
 
@@ -107,14 +109,15 @@ def main():
     labeled = ke.label_all(data)
 
     client = _make_client()
+    reviewed = reviewer.review_all(labeled, client)   # stage 1
     try:
-        reviewed = reviewer.review_all(labeled, client)
-        have_review = True
+        reviewer.escalate_all(reviewed, client)       # stage 2 (in place)
+        have_v2 = True
     except RuntimeError as e:
         print("WARNING:", e)
-        reviewed, have_review = labeled, False
+        have_v2 = False
 
-    report = build_report(reviewed, have_review)
+    report = build_report(reviewed, have_v2)
     REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
     REPORT_PATH.write_text(report)
     print(report)

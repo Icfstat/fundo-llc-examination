@@ -1,18 +1,20 @@
-# SOLUTION — Fundo AI Engineer Challenge (v1 baseline)
+# SOLUTION — Fundo AI Engineer Challenge (v2)
 
-This is the **baseline**: the smallest thing that runs end to end and produces
-measured numbers. Deferred analysis is listed explicitly at the end.
+A two-stage LLM reviewer of an imperfect keyword labeling engine, with measured
+credit impact. v1 was a single Luna pass; v2 adds a Terra adjudication stage on
+the flagged subset. Deferred analysis is listed explicitly at the end.
 
 ## Scope, and what is deferred
 
-**Done in v1 (runnable):**
+**Done (runnable):**
 - Synthetic Plaid-shaped dataset with ground-truth labels (10 businesses, 90
   days, ~1,850 transactions).
 - Deliberately imperfect 13-group keyword engine with precedence and a
   business/personal flag.
-- LLM reviewer: one cached GPT-6 Luna call per transaction.
+- Two-stage reviewer: GPT-6 Luna triages every transaction; GPT-5.6 Terra
+  re-reviews only the flagged subset to confirm or overturn.
 - Credit-impact compute: per-business features and the offer rule, for
-  truth / legacy / corrected labels.
+  truth / legacy / v1 / v2 labels.
 - A measured report: revenue dollar error and reviewer behavior vs truth.
 
 **Deferred to the next pass (writeup, mostly not code):**
@@ -47,43 +49,61 @@ bugs — a more honest and defensible stand-in for a legacy engine, and still
    (undercounting overdrafts). The same blind spot harmlessly spares a noisy
    `...DESCR:TRANSFER` Shopify payout from the blunt-match error in (3).
 
-## The reviewer, and the model/code boundary
+## The two-stage reviewer, and the model/code boundary
 
-The model is a reviewer, not a relabeler: it sees the transaction and the
-engine's label and returns `agree` or `doubt` (+ corrected group,
-business/personal, confidence, one-line reason). Structured Outputs constrains
+The models are reviewers, not relabelers.
+
+- **Stage 1 — Luna triage (every transaction).** The fast, cheap model sees the
+  transaction and the engine label and returns `agree`/`doubt` (+ corrected
+  group, business/personal, reason). It is deliberately high-recall: it
+  over-flags rather than miss, so stage 2 mostly needs to *prune* false flags.
+- **Stage 2 — Terra adjudication (flagged subset only).** The stronger reasoning
+  model sees the engine label *and Luna's suggestion* and confirms or overturns.
+  Running it only on the ~190 flags (not all ~1,850 txns) keeps cost tiny while
+  putting the strong model exactly where the hard calls are.
+
+**Confidence as scored criteria (not a guess).** Terra scores four criteria 0–1
+— counterparty clarity, direction consistency, group fit, evidence strength —
+and the confidence is their **mean, computed in code**. This makes the judgment
+legible to an underwriter instead of an opaque number.
+
+**Boundary (deliberate):** the models propose only `group` and
+`business_personal` (plus Terra's criterion scores). Code owns the rest:
+**revenue** is derived from the fixed rule (business AND credit AND no group),
+and the confidence is averaged in code. The dollar that drives the offer is
+never at the mercy of a free-form model answer. Structured Outputs constrains
 the JSON; an invalid group or malformed response **fails safe to the legacy
 label**.
 
-**Boundary (deliberate):** the model may propose only `group` and
-`business_personal`. It never decides **revenue** — that is derived in code
-from the fixed rule (business AND credit AND no group). The dollar that drives
-the offer is therefore never at the mercy of a free-form model answer.
+A known limitation: stage 2 only sees Luna's flags, so it cannot fix a case Luna
+wrongly *agreed* with (a false negative). Luna's high-recall design keeps that
+set small (0 missed in the measured run).
 
 ## Results (measured)
 
-Summed absolute error in average monthly revenue across the 10 businesses:
+Summed absolute error in average monthly revenue across the 10 businesses, and
+flags (changes to the engine label) vs ground truth:
 
-| | revenue error vs truth |
-|---|---|
-| legacy (keyword engine) | **$43,395** |
-| after reviewer corrections | **$12,386** |
+| | revenue error vs truth | good catches | bad flags | missed |
+|---|---|---|---|---|
+| legacy (keyword engine) | **$43,395** | — | — | — |
+| v1 — Luna only | **$12,386** | 152 | 42 | 0 |
+| v2 — Luna + Terra | **$898** | 152 | 4 | 0 |
 
-The reviewer cuts revenue error by ~71%. Of 196 transactions it flagged: **152
-good catches** (fixed a real error), **44 bad flags** (doubted an already-correct
-label), **0 missed** engine errors. It also fixes offers: the engine's NSF
-undercount (missed NSF variants) wrongly offered biz_04/biz_08 ~$33–40k when the
-truth is $0; after review both correctly return to $0.
+v2 cuts revenue error **98% vs legacy and 93% vs v1**. Terra overturns almost all
+of Luna's false flags (42 → 4) while keeping every good catch, and every
+business's offer now matches truth (e.g. the engine wrongly offered biz_04/biz_08
+~$33–40k on an NSF undercount; both correctly return to $0).
 
-**First-pass learning (what did not work):** the initial prompt listed the 13
-group *names* with no definitions. GPT-6 Luna invented semantics and reclassified
-~620 payment-processor deposits (real revenue) as "Not average monthly revenue",
-*tripling* the error to $128k. Adding a one-line glossary per group — and stating
-explicitly that processor payouts are revenue — fixed it.
+**What did not work (v1):** the first prompt listed the 13 group *names* with no
+definitions. Luna invented semantics and reclassified ~620 payment-processor
+deposits (real revenue) as "Not average monthly revenue", *tripling* error to
+$128k. A one-line glossary per group — stating explicitly that processor payouts
+are revenue — brought it to $12,386. Luna's remaining weakness was over-flagging
+(42 false flags); the Terra stage is what removed it.
 
-Residual $12,386 / 44 bad flags are left for the next pass. (GPT-6 Luna at
-temperature 0 is only best-effort deterministic, so separate live runs vary
-slightly; the committed cache is the fixed, reproducible result.)
+(GPT-6 Luna at temperature 0 is only best-effort deterministic, so separate live
+runs vary slightly; the committed cache is the fixed, reproducible result.)
 
 ## Determinism
 
@@ -94,10 +114,15 @@ the actual guarantee.)
 
 ## Cost
 
-GPT-6 Luna at $0.10 / $0.50 per M tokens, 1,745 cached calls (after prompt-level
-deduplication). One full pass costs **~$0.07** (measured); reproducing from the
-committed cache costs **$0**. Development used a few passes (prompt fix + cache
-format), so **total actual spend ≈ $0.2** — far under the $10 cap.
+Two models, both cached (1,745 Luna + 169 Terra responses in `cache/llm.json`):
+
+- **Luna** ($0.10 / $0.50 per M): one full triage pass ≈ **$0.07** (measured).
+- **Terra** ($2 / $12 per M, `reasoning_effort=low`): 169 flagged calls ≈
+  **~$1** (estimate; confirm on the usage dashboard).
+
+Reproducing from the committed cache costs **$0**. Restricting Terra to the
+flagged subset is what keeps the stronger model affordable. Total actual spend is
+a few dollars at most — far under the $10 cap.
 
 ## Tools used
 
