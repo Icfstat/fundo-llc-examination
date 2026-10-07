@@ -1,4 +1,4 @@
-# Fundo AI Engineer Challenge — v2
+# Fundo AI Engineer Challenge: v2
 
 A two-stage LLM **reviewer** of an imperfect keyword transaction-labeling engine.
 GPT-6 Luna triages every transaction and flags the doubtful ones; GPT-5.6 Terra
@@ -25,9 +25,9 @@ claimed: `truth` → `legacy` (engine) → `reviewer` (Luna / v1) → `corrected
 pip install -r requirements.txt
 ```
 
-Models (OpenAI API): **GPT-6 Luna** (`gpt-6-luna`) — cheap, high-throughput — for
-the full triage pass; **GPT-5.6 Terra** (`gpt-5.6-terra`) — stronger reasoning —
-for the small flagged subset only.
+Models (OpenAI API): **GPT-6 Luna** (`gpt-6-luna`), cheap and high-throughput, for
+the full triage pass; **GPT-5.6 Terra** (`gpt-5.6-terra`), stronger reasoning, for
+the small flagged subset only.
 
 ## Run it
 
