@@ -63,3 +63,12 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 ---
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+
+---
+
+## Project: Fundo AI Engineer Challenge
+
+- **Source of truth:** `docs/specs.md` is the authority for requirements (it tracks the official brief at https://github.com/Fundo-LLC/fundo-take-home/blob/main/ai-engineer-challenge/README.md). Follow it; raise conflicts rather than guessing.
+- **Deterministic cache replay:** committed LLM responses are a cache. A clean checkout must regenerate the submitted output from cache, with no API key, and produce identical results. Avoid anything that breaks this — unpinned model/version, timestamps, nondeterministic prompt ordering, unseeded randomness.
+- **Budget:** keep total LLM spend under US$10 and track actual spend.
+- **Model/code boundary:** keep explicit what the model may decide versus what stays in code; the writeup must defend that line.

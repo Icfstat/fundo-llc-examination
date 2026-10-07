@@ -6,12 +6,12 @@ Source: https://github.com/Fundo-LLC/fundo-take-home/blob/main/ai-engineer-chall
 
 Build an LLM reviewer of an imperfect keyword transaction-labeling engine. Flag doubtful labels, propose corrections, quantify their impact on funding decisions, and describe production readiness.
 
-Select a defensible scope; document omitted work and why. These requirements describe outcomes, not architecture or implementation choices.
+Select a defensible scope; document omitted work and why. The quality of decisions matters more than the number of features implemented. These requirements describe outcomes, not architecture or implementation choices.
 
 ## Data and legacy engine
 
 - Obtain data in Plaid transaction format: approximately 10 businesses, 90 days per business, and a couple of thousand transactions overall. Use Plaid Sandbox, synthetic data, or both; no real customer data.
-- Consult Plaid documentation for fields, categories, and amount sign conventions. Include funding-relevant cases, noisy descriptions, counterparty ambiguity, punctuation-related keyword failures, hard negatives, and untrusted counterparty text.
+- Consult Plaid documentation for fields, categories, and amount sign conventions. Include funding-relevant cases, noisy descriptions (e.g., `ACH CREDIT 0423 SQ *JOES TACOS`), counterparty ambiguity (`SQUARE INC` deposits are revenue; `SQUARE CAPITAL` is a loan), punctuation-related keyword failures (a keyword containing punctuation can silently never match), hard negatives, and untrusted counterparty text.
 - Build a small, deliberately imperfect keyword engine with precedence rules and a business/personal flag. Support these 13 groups:
   - Not average monthly revenue
   - NSFs
@@ -46,6 +46,17 @@ Select a defensible scope; document omitted work and why. These requirements des
 
 Provide one page, with no production implementation required, covering shadow operation and the gate for changing live decisions; shifts in risk-model inputs following keyword/classifier changes; reproduction of an original decline after later label changes and the records needed; underwriter involvement and feedback.
 
+## What is evaluated
+
+- It runs, and the output reproduces from the committed cache.
+- Review quality: dollar error, hard negatives, and specific errors examined — not just an aggregate score.
+- Credit judgment: which mislabels move risk, in which direction, and why.
+- Model/code boundary: what goes to the model and what stays in code.
+- Production thinking: shadow rollout, input drift, reproducibility, human in the loop.
+- Safety: untrusted text in the prompt, invalid model output, provider outages.
+- Simplicity: the smallest thing that works. Agent frameworks and vector databases need a reason to exist.
+- An honest gap costs less than a confident guess — state what is missing rather than rushing it.
+
 ## Execution and deliverables
 
 - Any language and LLM provider/model are allowed; justify the model choice. One documented command runs the solution, with any required API key supplied through an environment variable.
@@ -58,3 +69,18 @@ Provide one page, with no production implementation required, covering shadow op
 ## Definitions requiring explicit assumptions
 
 The brief does not supply keyword lists, precedence order, complete group semantics, the set of revenue-excluding groups, or exact aggregation conventions. State the definitions adopted for evaluation references, unmatched transactions, monthly revenue, daily funder payments, feature denominators, mislabel experiments, and applying proposed corrections. Identify these as submission assumptions rather than Fundo-provided rules.
+
+### Adopted assumptions (v1)
+
+Submission assumptions, not Fundo rules:
+
+- **Plaid sign convention:** `amount > 0` is money out of the account (debit); `amount < 0` is money in (credit).
+- **Evaluation reference:** the generated ground-truth label on each transaction. Error is measured against it.
+- **Revenue-excluding groups:** all 13 groups exclude revenue. Revenue = business AND credit AND no group matched.
+- **Unmatched transactions:** a transaction matching no group gets group = none; a business credit with no group is revenue.
+- **Precedence:** highest-priority group wins when several match, in the order listed in `src/keyword_engine.py` (risk/negative flags, then obligations, then transfers/verification, then catch-alls).
+- **Average monthly revenue:** revenue dollars over the 90-day window ÷ 3 months.
+- **Daily funder payments:** Active-advance debit dollars ÷ 90 days.
+- **Feature denominators:** total deposits = all credit dollars; total debits = all debit dollars (from the signed amount, label-independent).
+- **Applying proposed corrections:** a correction is applied only when the reviewer returns `verdict = doubt`; otherwise the legacy label stands.
+- **Mislabel experiments:** deferred to the next pass (not in v1).
