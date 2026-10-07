@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.94,
+  "group": null,
+  "reason": "Commercial rent-related debit; no listed risk or transaction group applies.",
+  "verdict": "agree"
+}

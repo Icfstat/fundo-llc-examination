@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.98,
+  "group": null,
+  "reason": "Shopify credit is a payment-processor payout and should be treated as business revenue.",
+  "verdict": "agree"
+}

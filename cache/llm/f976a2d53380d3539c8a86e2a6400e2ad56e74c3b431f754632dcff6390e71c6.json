@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.98,
+  "group": null,
+  "reason": "Square payment-processor deposit is ordinary business sales revenue; no group applies.",
+  "verdict": "agree"
+}

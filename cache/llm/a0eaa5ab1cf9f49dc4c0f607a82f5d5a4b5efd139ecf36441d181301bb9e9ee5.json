@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.98,
+  "group": "Not average monthly revenue",
+  "reason": "SQ indicates a Square credit, but a yoga studio merchant credit is not ordinary payment-processor sales revenue.",
+  "verdict": "doubt"
+}

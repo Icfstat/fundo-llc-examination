@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.91,
+  "group": null,
+  "reason": "Wholesale invoice credit appears to be ordinary recurring business sales revenue.",
+  "verdict": "agree"
+}

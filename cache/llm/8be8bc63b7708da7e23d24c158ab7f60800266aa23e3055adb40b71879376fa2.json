@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.99,
+  "group": "UCC",
+  "reason": "UCC filing fee is a business lien-related expense.",
+  "verdict": "agree"
+}

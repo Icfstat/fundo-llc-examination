@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.99,
+  "group": "NSFs",
+  "reason": "Returned-item fee is an NSF-related bank fee.",
+  "verdict": "doubt"
+}

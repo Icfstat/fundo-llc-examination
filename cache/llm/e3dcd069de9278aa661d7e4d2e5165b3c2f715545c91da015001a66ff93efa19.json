@@ -1,0 +1,7 @@
+{
+  "business_personal": "personal",
+  "confidence": 0.99,
+  "group": null,
+  "reason": "Starbucks is a personal dining/coffee expense; no specified risk group applies.",
+  "verdict": "agree"
+}

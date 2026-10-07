@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.98,
+  "group": null,
+  "reason": "Gusto payroll debit is a routine business payroll expense; no listed group applies.",
+  "verdict": "agree"
+}

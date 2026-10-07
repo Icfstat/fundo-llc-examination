@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.98,
+  "group": null,
+  "reason": "Clover is a payment processor; this business credit is sales revenue, not a separate group.",
+  "verdict": "agree"
+}

@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.99,
+  "group": "High risk \u2014 gambling",
+  "reason": "DraftKings is a sportsbook; the debit is gambling-related.",
+  "verdict": "agree"
+}

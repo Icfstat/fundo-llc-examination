@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.98,
+  "group": "Not average monthly revenue",
+  "reason": "A bakery merchant payment is not a business credit or recurring sales revenue.",
+  "verdict": "doubt"
+}

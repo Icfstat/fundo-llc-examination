@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.91,
+  "group": null,
+  "reason": "Stripe payout is a payment-processor sales credit, not an internal transfer; it is business revenue.",
+  "verdict": "doubt"
+}

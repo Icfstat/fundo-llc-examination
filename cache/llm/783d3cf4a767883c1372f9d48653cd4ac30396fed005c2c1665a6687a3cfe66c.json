@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.98,
+  "group": "Not average monthly revenue",
+  "reason": "A large credit from an auto business appears to be a one-off, non-operating credit, not recurring sales.",
+  "verdict": "doubt"
+}

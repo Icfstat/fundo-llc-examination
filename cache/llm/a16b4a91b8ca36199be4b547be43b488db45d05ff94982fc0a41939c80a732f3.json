@@ -1,0 +1,7 @@
+{
+  "business_personal": "personal",
+  "confidence": 0.98,
+  "group": null,
+  "reason": "Small Venmo payment to a friend is a personal debit; no listed group applies.",
+  "verdict": "agree"
+}

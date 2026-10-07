@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.98,
+  "group": null,
+  "reason": "Gusto is a payroll service; this is an ordinary business payroll debit, not a listed risk group.",
+  "verdict": "agree"
+}

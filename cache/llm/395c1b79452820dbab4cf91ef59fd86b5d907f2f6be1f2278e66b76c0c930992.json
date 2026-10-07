@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.98,
+  "group": null,
+  "reason": "SQ payment-processor credit; ordinary business sales revenue carries no group.",
+  "verdict": "agree"
+}

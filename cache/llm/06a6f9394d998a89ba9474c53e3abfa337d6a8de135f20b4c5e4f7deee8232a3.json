@@ -1,0 +1,7 @@
+{
+  "business_personal": "personal",
+  "confidence": 0.78,
+  "group": null,
+  "reason": "SQ *GREEN GROCER appears to be a grocery purchase; despite the credit sign, it is likely personal.",
+  "verdict": "doubt"
+}

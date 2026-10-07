@@ -60,16 +60,28 @@ label**.
 from the fixed rule (business AND credit AND no group). The dollar that drives
 the offer is therefore never at the mercy of a free-form model answer.
 
-## Results
+## Results (measured)
 
-- **Measured** — legacy vs truth, summed absolute error in average monthly
-  revenue across the 10 businesses: **$43,395**. The missed NSF variants (a
-  vocabulary gap) also undercount NSFs, which flips some offers from $0 to a positive number
-  (e.g. biz_04, biz_08) — a concrete funding error.
-- **Pending first real run** — corrected vs truth error and the reviewer
-  behavior counts (good catches / bad flags / missed) are produced by
-  `python src/run.py` once the cache is populated; numbers go here, marked
-  measured.
+Summed absolute error in average monthly revenue across the 10 businesses:
+
+| | revenue error vs truth |
+|---|---|
+| legacy (keyword engine) | **$43,395** |
+| after reviewer corrections | **$10,183** |
+
+The reviewer cuts revenue error by ~76%. Of 190 transactions it flagged: **152
+good catches** (fixed a real error), **38 bad flags** (doubted an already-correct
+label), **0 missed** engine errors. It also fixes offers: the engine's NSF
+undercount (missed NSF variants) wrongly offered biz_04/biz_08 ~$33–40k when the
+truth is $0; after review both correctly return to $0.
+
+**First-pass learning (what did not work):** the initial prompt listed the 13
+group *names* with no definitions. GPT-6 Luna invented semantics and reclassified
+~620 payment-processor deposits (real revenue) as "Not average monthly revenue",
+*tripling* the error to $128k. Adding a one-line glossary per group — and stating
+explicitly that processor payouts are revenue — fixed it.
+
+Residual $10,183 / 38 bad flags are left for the next pass.
 
 ## Determinism
 
@@ -80,9 +92,10 @@ the actual guarantee.)
 
 ## Cost
 
-GPT-6 Luna at $0.10 / $0.50 per M tokens, ~1,850 short calls (with prompt-level
-deduplication). Estimated first-run spend **< $0.25**; $0 thereafter from cache.
-Actual spend to be recorded after the first real run.
+GPT-6 Luna at $0.10 / $0.50 per M tokens, 1,745 cached calls (after prompt-level
+deduplication). One full pass costs **~$0.07** (measured); reproducing from the
+committed cache costs **$0**. Development used two passes (one prompt fix), so
+**total actual spend ≈ $0.14** — far under the $10 cap.
 
 ## Tools used
 

@@ -1,0 +1,7 @@
+{
+  "business_personal": "personal",
+  "confidence": 0.98,
+  "group": null,
+  "reason": "Venmo payment to a friend is a personal outgoing transfer, not a listed risk category.",
+  "verdict": "agree"
+}

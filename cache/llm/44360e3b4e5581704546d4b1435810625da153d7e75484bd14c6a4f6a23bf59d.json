@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.99,
+  "group": "NSFs",
+  "reason": "Non-sufficient funds charge is an NSF fee.",
+  "verdict": "doubt"
+}

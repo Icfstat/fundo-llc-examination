@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.99,
+  "group": "Revenue verification",
+  "reason": "A trial deposit is an account-verification microdeposit, not business revenue.",
+  "verdict": "agree"
+}

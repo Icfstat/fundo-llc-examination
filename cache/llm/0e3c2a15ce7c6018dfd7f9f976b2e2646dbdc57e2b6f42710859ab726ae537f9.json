@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.98,
+  "group": null,
+  "reason": "Gusto Payroll is a business payroll expense; no listed group applies.",
+  "verdict": "agree"
+}

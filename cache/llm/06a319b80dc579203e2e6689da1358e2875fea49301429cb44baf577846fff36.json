@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.98,
+  "group": "Not average monthly revenue",
+  "reason": "A large credit from a yoga studio is not a payment-processor sales payout; likely a one-off business credit.",
+  "verdict": "doubt"
+}

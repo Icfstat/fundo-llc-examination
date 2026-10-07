@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 1,
+  "group": "Overdraft",
+  "reason": "An overdraft fee is explicitly an Overdraft event.",
+  "verdict": "agree"
+}

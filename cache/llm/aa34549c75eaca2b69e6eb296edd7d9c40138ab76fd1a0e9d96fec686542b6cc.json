@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.96,
+  "group": null,
+  "reason": "Wholesale invoice credit from a business customer appears to be ordinary business revenue.",
+  "verdict": "agree"
+}

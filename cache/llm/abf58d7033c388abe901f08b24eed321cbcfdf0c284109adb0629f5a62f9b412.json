@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.98,
+  "group": "Not average monthly revenue",
+  "reason": "Large one-off credit from a taco merchant is not recurring sales revenue.",
+  "verdict": "doubt"
+}

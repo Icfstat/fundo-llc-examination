@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.99,
+  "group": "High risk \u2014 gambling",
+  "reason": "DraftKings bet is a gambling transaction.",
+  "verdict": "agree"
+}

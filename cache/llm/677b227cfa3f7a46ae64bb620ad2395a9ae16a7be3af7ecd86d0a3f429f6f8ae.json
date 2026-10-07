@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.98,
+  "group": null,
+  "reason": "Utility bill payment is an ordinary business expense; no listed group applies.",
+  "verdict": "agree"
+}

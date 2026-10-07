@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.98,
+  "group": null,
+  "reason": "Clover payment-processor deposit is a business sales credit; no group applies.",
+  "verdict": "agree"
+}

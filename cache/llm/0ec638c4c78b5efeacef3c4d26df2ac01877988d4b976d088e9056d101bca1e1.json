@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.91,
+  "group": "Not average monthly revenue",
+  "reason": "A credit from SQ *YOGA LOFT appears to be a refund or reversal, not a payment-processor sales payout.",
+  "verdict": "doubt"
+}

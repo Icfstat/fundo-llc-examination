@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.94,
+  "group": null,
+  "reason": "Wholesale supplier payment is an ordinary business expense; no listed risk group applies.",
+  "verdict": "agree"
+}

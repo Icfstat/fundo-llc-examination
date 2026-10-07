@@ -1,0 +1,7 @@
+{
+  "business_personal": "personal",
+  "confidence": 0.88,
+  "group": null,
+  "reason": "Small Zelle payment to an individual; appears personal, with no specified risk category.",
+  "verdict": "agree"
+}

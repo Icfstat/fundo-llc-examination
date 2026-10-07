@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.99,
+  "group": "High risk \u2014 bankruptcy",
+  "reason": "Chapter 7 trustee payment is a bankruptcy-related payment.",
+  "verdict": "agree"
+}

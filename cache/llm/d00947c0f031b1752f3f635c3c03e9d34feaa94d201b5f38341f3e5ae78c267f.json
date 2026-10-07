@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.98,
+  "group": null,
+  "reason": "Gusto payroll is a business payroll debit; no listed risk or transfer group applies.",
+  "verdict": "agree"
+}

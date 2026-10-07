@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.99,
+  "group": null,
+  "reason": "Clover is a payment processor; its business sales payout is revenue and has no group.",
+  "verdict": "agree"
+}

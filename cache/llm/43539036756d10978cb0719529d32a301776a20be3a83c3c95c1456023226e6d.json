@@ -1,0 +1,7 @@
+{
+  "business_personal": "personal",
+  "confidence": 0.99,
+  "group": null,
+  "reason": "Starbucks purchase is a personal expense; no specified risk or transaction group applies.",
+  "verdict": "agree"
+}

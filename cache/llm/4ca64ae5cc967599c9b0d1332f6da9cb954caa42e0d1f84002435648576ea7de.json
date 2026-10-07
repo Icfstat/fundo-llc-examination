@@ -1,0 +1,7 @@
+{
+  "business_personal": "business",
+  "confidence": 0.98,
+  "group": "Not average monthly revenue",
+  "reason": "IRS tax refund is a one-off, non-operating business credit, not recurring sales revenue.",
+  "verdict": "agree"
+}

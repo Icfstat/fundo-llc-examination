@@ -1,0 +1,7 @@
+{
+  "business_personal": "personal",
+  "confidence": 0.84,
+  "group": null,
+  "reason": "SQ indicates a Square payment, but Bella Salon appears to be a personal salon purchase, not business revenue.",
+  "verdict": "doubt"
+}
