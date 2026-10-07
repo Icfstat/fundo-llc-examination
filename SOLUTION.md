@@ -18,8 +18,6 @@ the flagged subset. Deferred analysis is listed explicitly at the end.
 - A measured report: revenue dollar error and reviewer behavior vs truth.
 
 **Deferred to the next pass (writeup, mostly not code):**
-- The two short-answer questions (zero-NSF bank; 61-day vs 90-day history).
-- False-revenue vs false-active-advance cost analysis.
 - Production one-pager (shadow rollout, input drift, reproducibility, humans).
 
 ## Data
@@ -162,6 +160,54 @@ high, and active advance missed or labelled too low. Both make the business look
 healthier or less indebted than it is. Understating the offer only costs a lost
 deal. The review stage should therefore guard hardest against false revenue and
 missed active advance.
+
+## Credit impact — a bank that charges no NSF fees (Part 2)
+
+When a bank charges no NSF fees, the NSF count is always zero, whatever the
+business does. The model cannot tell this empty zero apart from a real zero
+earned by a healthy account, so it reads the record as clean and gives the
+business credit it has not earned. The result is that the model under-rates the
+risk of businesses at no-fee banks and tends to offer them too much — the
+dangerous, over-lending direction.
+
+The fix is to add an indicator that records whether the bank charges NSF fees.
+This lets the model treat a zero NSF count as meaningful only when the bank
+actually charges fees, and disregard it otherwise. For this to work the model
+must be allowed to combine the indicator with the NSF count, so that a zero at a
+no-fee bank no longer counts as a sign of health. Building a separate model for
+each type of bank would also work, but it splits the data into smaller groups
+and needs many businesses in each; the indicator is simpler and learns from all
+the data, so it is the better default unless no-fee banks make up a large share
+of applicants.
+
+## Credit impact — 61 days of history when the model expects 90 (Part 2)
+
+**What breaks.** Totals and counts grow with time, and the current code divides
+by a fixed 90 days (3 months), so a 61-day history understates monthly revenue
+and the daily funder payment. The fix is one general model that is given the
+number of days as a variable, divides every total by the actual number of days,
+and is trained on histories of different lengths — built by trimming the 90-day
+histories to shorter ones, so the same business can appear once as a 60-day row
+and once as a 90-day row, each carrying its day count:
+
+| business | number_of_days | avg_monthly_revenue | nsf_per_90_days |
+|---|---|---|---|
+| biz_01 | 90 | 29,600 | 6 |
+| biz_01 | 60 | 29,900 | 4 |
+| biz_02 | 90 | 32,400 | 2 |
+
+(The 60-day row for the same business gives a close but noisier estimate — fewer
+days, so the NSF figure is less settled.) One rule needs special care: the
+`NSF > 5` cut-off counts raw NSFs, so a short history shows fewer and can slip
+under the limit — 4 NSFs in 61 days is about 6 over 90 days — so the cut-off
+should use an NSF count scaled to 90 days, not the raw number.
+
+**How to detect it.** Record the number of days of history on every application
+and watch how it changes over time, so a rise in short histories is visible.
+Also watch the average input values for a steady fall — for example, if the
+average NSF count across new applications drops from about 4 to about 2 over a
+short period, shorter histories are a likely cause. Very short histories can be
+sent for a human review.
 
 ## Determinism
 
