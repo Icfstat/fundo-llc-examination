@@ -19,37 +19,40 @@ Every transaction carries four label layers so error is **measured**, not
 claimed: `truth` → `legacy` (engine) → `reviewer` (Luna / v1) → `corrected`
 (Luna+Terra / v2).
 
-## Setup
-
-```bash
-pip install -r requirements.txt
-```
-
 Models (OpenAI API): **GPT-6 Luna** (`gpt-6-luna`), cheap and high-throughput, for
 the full triage pass; **GPT-5.6 Terra** (`gpt-5.6-terra`), stronger reasoning, for
 the small flagged subset only.
 
-## Run it
+## Setup
 
 ```bash
-# 1) First run: populates the LLM response cache. Needs a key.
-export OPENAI_API_KEY=sk-...
-python src/run.py
-
-# 2) Commit the cache so the output reproduces without a key.
-git add cache/llm.json && git commit -m "Add LLM response cache"
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
 ```
 
-## Reproduce from cache (no API key)
+## Reproduce the results (no API key)
+
+The dataset and the LLM responses are committed, so the full report regenerates
+offline and identically every run:
 
 ```bash
-unset OPENAI_API_KEY
-python src/run.py        # replays cache/llm.json, identical output
+.venv/bin/python src/run.py          # writes out/report.md
+.venv/bin/python src/sensitivity.py  # Part 2 mislabel-sensitivity table
 ```
 
-The committed data (`data/transactions.json`) and cache (`cache/llm.json`) make a
-clean checkout reproduce the report deterministically. The report is written to
-`out/report.md`.
+The committed `data/transactions.json` and `cache/llm.json` make a clean checkout
+reproduce the report deterministically.
+
+## Regenerate the cache from scratch (needs a key)
+
+Create a gitignored `.env` file containing `OPENAI_API_KEY=<your key>`, then:
+
+```bash
+set -a; source .env; set +a
+.venv/bin/python src/run.py          # repopulates cache/llm.json
+```
+
+Results then reproduce from the committed cache with no key.
 
 ## Layout
 
@@ -59,5 +62,6 @@ src/keyword_engine.py  the 13-group keyword engine (deliberately imperfect)
 src/reviewer.py        two-stage: Luna triage (all) + Terra adjudication (flags)
 src/cache.py           single-file cache keyed by sha256(model + prompt)
 src/features.py        per-business features + offer rule
+src/sensitivity.py     mislabel-sensitivity analysis (Part 2)
 src/run.py             orchestrates the pipeline and writes the report
 ```
