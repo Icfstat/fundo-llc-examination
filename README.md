@@ -25,6 +25,8 @@ the small flagged subset only.
 
 ## Setup
 
+Requires **Python 3.9 or newer** (tested on 3.13).
+
 ```bash
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt

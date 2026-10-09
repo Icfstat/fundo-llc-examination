@@ -1,1 +1,2 @@
+# Requires Python 3.9+ (tested on 3.13). pip cannot install Python itself.
 openai>=1.0
