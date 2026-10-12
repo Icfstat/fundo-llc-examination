@@ -45,14 +45,20 @@ reproduce the report deterministically.
 
 ## Regenerate the cache from scratch (needs a key)
 
-Create a gitignored `.env` file containing `OPENAI_API_KEY=<your key>`, then:
+Create a gitignored `.env` file containing `OPENAI_API_KEY=<your key>`, then clear
+the committed responses and re-run so every prompt is fetched again:
 
 ```bash
+rm -f cache/llm.json
 set -a; source .env; set +a
-.venv/bin/python src/run.py          # repopulates cache/llm.json
+.venv/bin/python src/run.py          # re-fetches all prompts, writes a fresh cache/llm.json
 ```
 
-Results then reproduce from the committed cache with no key.
+"From scratch" here means the LLM responses; the dataset is deterministic and is
+rebuilt identically by `src/generate_data.py`. Because the models are only
+best-effort deterministic, a fresh rebuild can differ slightly from the committed
+cache, so the committed `cache/llm.json` is the reference for the numbers in
+`SOLUTION.md`.
 
 ## Layout
 
