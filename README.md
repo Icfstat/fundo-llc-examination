@@ -55,8 +55,7 @@ set -a; source .env; set +a
 ```
 
 "From scratch" here means the LLM responses; the dataset is deterministic and is
-rebuilt identically by `src/generate_data.py`. Because the models are only
-best-effort deterministic, a fresh rebuild can differ slightly from the committed
+rebuilt identically by `src/generate_data.py`. A fresh rebuild can differ slightly from the committed
 cache, so the committed `cache/llm.json` is the reference for the numbers in
 `SOLUTION.md`.
 
