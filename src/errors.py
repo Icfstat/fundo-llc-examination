@@ -16,6 +16,12 @@ import keyword_engine as ke
 import reviewer
 
 
+def _fmt(label):
+    return (f"group={label['group']}  "
+            f"business_personal={label['business_personal']}  "
+            f"revenue={label['revenue']}")
+
+
 def main():
     with open(generate_data.DATA_PATH) as f:
         txns = json.load(f)
@@ -32,12 +38,32 @@ def main():
     for t in wrong:
         engine_right = (t["legacy"]["group"] == t["truth"]["group"]
                         and t["legacy"]["business_personal"] == t["truth"]["business_personal"])
-        kind = "bad flag (engine was right)" if engine_right else "missed or wrong fix"
-        decision = t.get("terra", t["reviewer"])   # Terra's record if it ran, else Luna's
-        print(f"- {t['transaction_id']}  {t['name']!r}")
-        print(f"    truth={t['truth']['group']}  legacy={t['legacy']['group']}  "
-              f"final={t['corrected']['group']}  [{kind}]")
-        print(f"    confidence={decision.get('confidence')}  reason={decision.get('reason')!r}\n")
+        kind = "bad flag, engine was right" if engine_right else "missed or wrong fix"
+        direction = "money in (credit)" if t["amount"] < 0 else "money out (debit)"
+
+        print("=" * 70)
+        print(f"{t['transaction_id']}   {t['date']}   {t['name']!r}")
+        print(f"  raw:      amount={t['amount']} {t['iso_currency_code']} ({direction})  "
+              f"business_id={t['business_id']}")
+        print(f"  truth:    {_fmt(t['truth'])}")
+        print(f"  engine:   {_fmt(t['legacy'])}"
+              f"   [{'matches truth' if engine_right else 'differs from truth'}]")
+
+        luna = t["reviewer"]
+        print(f"  Luna:     verdict={luna['verdict']}  {_fmt(luna)}")
+        print(f"            confidence={luna.get('confidence')}  reason={luna.get('reason')!r}")
+
+        if "terra" in t:
+            terra = t["terra"]
+            print(f"  Terra:    verdict={terra['verdict']}  {_fmt(terra)}")
+            crit = terra.get("criteria") or {}
+            if crit:
+                print("            criteria: " + "  ".join(f"{k}={v}" for k, v in crit.items()))
+            print(f"            confidence={terra.get('confidence')}  reason={terra.get('reason')!r}")
+        else:
+            print("  Terra:    not escalated (Luna agreed with the engine)")
+
+        print(f"  final:    {_fmt(t['corrected'])}   [WRONG vs truth, {kind}]\n")
 
 
 if __name__ == "__main__":
